@@ -1,0 +1,203 @@
+button{
+  cursor: pointer;
+}
+/* header*/
+.bar{
+  display: flex;
+  align-items: center;
+  width:100%;
+  height: 12%;
+  position: absolute;
+  background-color: rgba(5, 4, 4, 0.87);
+  top:0;
+  color:#B98E47;
+  position: fixed;
+}
+.bar>p{
+  cursor: pointer;
+  margin-left :1vw;
+}
+.logo{
+  height: 60vh;  
+  margin-top:-2vh; 
+  margin-left: -23vh;
+} 
+.fa-sort-down{
+  margin-left: 1vh;
+}
+.fa-comment-dots{
+  margin-right: 0.3vh;
+}
+.connection{
+  top:4vw;     
+  list-style: none;
+  display: none;
+  position: absolute;
+  background-color: rgba(5, 4, 4, 0.87);
+  max-width: 15vw;
+  height: 20vw;
+}
+.p2{
+  cursor: pointer;
+  list-style: none;
+  font-size: 15px;
+}
+.p2:hover .connection{
+  display: block;
+}
+.login{
+  margin-top:2vh;
+}
+.span1{ outline: none; border-radius: 1px; -webkit-border-radius: 1px; -moz-border-radius: 1px; -ms-border-radius: 1px; -o-border-radius: 1px;
+}
+.btn1{
+  background-color: #C29638;
+  outline: none;
+  border-radius: 0.3vw;
+  margin-left:3.3vw;
+  margin-top:2vh ;
+  margin-bottom:2vh ;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  padding-left: 0.5vw;
+  padding-right: 0.5vw;
+  
+}
+.fa-sort-down:hover .connection{
+  display: block;
+}
+/* home page */
+.home_img{
+  height: 12vh;
+  width: 6vw;
+  border-radius: 50%;
+} 
+
+.carousel{
+  top:0;
+  width: 100%;
+  height: 90vh;
+  position: relative;
+}
+.part_1{
+display: flex;
+justify-content: space-around;
+text-align: center;
+}
+.part_2{
+display: flex;
+margin-top:10vh;
+margin-left: 25vw;
+} 
+h3{
+font-family: 'Courier New', Courier, monospace;
+}
+.btn3{
+background-color: #C29638;
+padding-left: 3vw ;
+padding-right: 3vw ;
+border-radius: 0.3vw;
+outline: none;
+margin-left: 1vh;
+}
+/*register page*/
+.p1{
+  margin-top:10%;
+  text-align: center;
+}
+.block1{
+  display: flex;
+}
+.btn2{
+  background-color: #C29638;
+  outline: none;
+  border-radius: 0.3vw;
+  margin-left:11.5vw;
+  margin-top:4vh ;
+  margin-bottom:2vh ;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  padding-left: 0.5vw;
+  padding-right: 0.5vw;
+}
+.inscri{
+  margin-top:5.8%;
+  padding-top:8vh;
+  height:80vh ;
+  width: 100%;
+  padding-left: 25vw;
+  background:linear-gradient( to right, rgba(5, 4, 4, 0.911), rgb(255, 255, 255))
+}
+.img5{
+  margin-left:2vw;
+  margin-right:18vw;
+  margin-top:30vh;
+}
+.inscri>input{
+  outline: none;
+  border:none;
+  float: right;
+  margin-right:9.3vw;
+  border-radius: 0.5vh;
+}
+.inscri>span{
+  margin-left:7vw;
+  
+}
+/* restaurant page */
+.restoList{
+  display: flex;
+  justify-content: space-around;
+  max-width: 60vw;
+  border: solid rgb(163, 129, 16) 2px;
+  margin-bottom:0.5vh ;
+}
+.part1{
+  margin-top:10%;
+}
+.imgResto{
+  height: 16vh;
+  width :8vw;
+}
+.btn4{
+  height: 4vh;
+}
+.pannier{
+  background:#3d3f41f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(163, 129, 16);
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+  border-radius: 50%;
+  position: absolute;
+  top:20vh;
+ left: 6vw;
+}
+.tot_cart{
+margin-top:20vh;
+}
+.shopping-cart{
+  display: flex;
+  width: 50px;
+  position: relative;
+}
+.shopping-cart>i{
+  width: 50vw;
+}
+.shopping-cart>h4{
+  margin-top:20vh;
+  cursor: pointer;
+}
+.fa-shopping-cart{
+  font-size: 36px;
+  color:rgb(163, 129, 16);
+}
+/* cart page */
+.cart{
+  margin-top: 10%;
+  display: flex;
+}
