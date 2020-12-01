@@ -33,40 +33,38 @@ const Register = () => {
 };
     return ( <div className="block1" >
     {loading? (<img src="https://www.mid-day.com/Resources/midday/images/loader.gif" style={{width:'100%',height:'100vh'}}alt="gif"/>)
-    : errors ? ( <h1 style={{marginTop:'15%', marginLeft:'40%'}}>404 Not Found </h1>): user? (<Redirect to='/profile'/>):(
-    <div className="inscri">
+   : user? (<Redirect to='/profile'/>):(
+    <div className="register">
         <p className="p1"> Prenez quelques minutes pour vous inscrire</p>
-        <h4>Informations personnelles</h4>
         
-        <div><span>🧑‍</span>
+        <div className="re_m"><span>🧑‍</span>
         <input 
         onChange={(e)=>setName(e.target.value) } 
         type="text "
         placeholder="nom et prénom"/> </div>
 
-        <div><span>☎️</span> 
+        <div className="re_m" ><span>☎️</span> 
         <input onChange={(e)=>setTelephone(e.target.value) }  
         type="text"
         placeholder="numéro de téléphone"/></div>
 
-        <div><span>📧</span> 
+        <div className="re_m"><span>📧</span> 
         <input 
         onChange={(e)=>setEmail(e.target.value)  }
         type="email" 
         placeholder="e-mail" /></div>
 
-        <div><span>***</span> 
+        <div className="re_m" > 
         <input  onChange={(e)=>setPassword(e.target.value)  }
         type="password"
         placeholder="mot de passe"/></div>
-        <h4>Adresse principale</h4>
         
-        <div><span> 🏠</span> 
+        <div className="re_m"><span> 🏠</span> 
         <input onChange={(e)=>setAdress(e.target.value)} 
         type="text" 
         placeholder="adresse"/></div>
 
-        <div><span>🏣</span> 
+        <div className="re_m" ><span>🏣</span> 
         <input onChange={(e)=>setCodePostal(e.target.value)} 
         type="text"
         placeholder="code postale" /></div>

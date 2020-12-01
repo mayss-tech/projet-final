@@ -1,10 +1,12 @@
 import {ADD_ITEM,
         REMOVE_ITEM,
         INCREASE_ITEM,
-        DECREASE_ITEM} from "../constants/action-types";
+        DECREASE_ITEM
+        } from "../constants/action-types";
 
 const initialState={
 cartItems:[],
+qtn:0
 }
 const cartReducer =(state=initialState ,{ type,payload})=>{
     switch(type){
@@ -14,14 +16,14 @@ const cartReducer =(state=initialState ,{ type,payload})=>{
             if(isExist){
                 return {
                 ...state,
-                cartItems :[ ...state.cartItems.map(el=>el._id===isExist._id?item:el)]
+                cartItems :[...state.cartItems.map(el=>el._id===isExist._id?item:el)]
                 }
-            }else{
+            }if(!isExist){
                 return{
                 ...state,
                 cartItems:[...state.cartItems,item]   
                 }
-            }
+            }break;
         case REMOVE_ITEM:
             return{
                 ...state,
@@ -31,20 +33,15 @@ const cartReducer =(state=initialState ,{ type,payload})=>{
             return {
                 ...state,
                 cartItems : state.cartItems.map(el=>el._id===payload._id
-                    ? {...el, 
-                        qtn: el.qtn + 1}
-            : el)
+                    ? {...el,qtn: el.qtn+1} : el)
             }
-            
         case DECREASE_ITEM:
             return{
                 ...state,
-                cartItems: state.cartItems.map(el=>el._id===payload._id
-                    ?{...el,
-                        qtn : el.qtn-1}
-            : el)
-            } 
+                cartItems : state.cartItems.map(el=>el._id===payload._id
+                ? {...el,qtn: el.qtn-1} : el)
+        }
         default:
             return state
-}}
+}};
 export default cartReducer;

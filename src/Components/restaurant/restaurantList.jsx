@@ -2,7 +2,8 @@ import React, { useEffect} from 'react';
 import {fetchRestaurantBeginAsync} from '../JS/actions/restaurantAction';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-// import Star from './star'
+import Rate from './rate';
+
 const RestoList = (props) => {
     const dispatch = useDispatch();
     const restaurants= useSelector((state) => state.restoReducer.restaurants);
@@ -19,12 +20,14 @@ const RestoList = (props) => {
         <div className="part1"> 
         {       restaurants.map(el=><div className="restoList" key={el.id}>
                 <img className="imgResto" src={el.image} alt="image"/>
-                <div style={{display:"block"}} >
+                <div  className="desc">
                 <h4>{el.name}</h4>
                 <p>{el.desc}</p>
-                {/* <p><Star/></p> */}
                 </div>
-                <button className="btn1" onClick={()=>props.history.push("/menuList")} >Voir menu</button>
+                <p className="rating">{el.rate }<Rate/></p>
+                <div ><button  className="btn_resto"
+                onClick={()=>props.history.push("/menuList")} >
+                Voir menu</button></div>
             </div>)
         }
         </div>

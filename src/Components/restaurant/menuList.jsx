@@ -1,9 +1,8 @@
-import React, { useEffect, useState} from 'react';
+import React, {useEffect,useState} from 'react';
 import {fetchMenuAsync} from '../JS/actions/menuAction';
 import { useDispatch, useSelector } from 'react-redux';
-import Fade from "react-reveal/Fade";
 import { addItem } from '../JS/actions/shopping-cartAction';
-
+import Modal from 'react-modal';
 const MenuList= (props) => {
     const menus= useSelector((state) => state.menuReducer.menus);
     const loading = useSelector((state) => state.menuReducer.loading);
@@ -14,31 +13,46 @@ const MenuList= (props) => {
     useEffect(() => {
         dispatch(fetchMenuAsync())
         }, []);
-
+    const [popUp,setPopUp]=useState(null);
+const openModal=(el)=>{
+    setPopUp({popUp})
+}
+const closeModal=()=>{
+    setPopUp()}
     return loading ? (
         <img src="https://www.mid-day.com/Resources/midday/images/loader.gif" style={{width:'100%',height:'100vh'}}alt="gif"/>
     ) :error? ( <h1 style={{marginTop:'15%', marginLeft:'40%'}}> 404 Not Found </h1>
     ) : ( 
     <div>
         <div className="shopping-cart">
-            <h4 onClick={()=>props.history.push('/cartItems')}>Mon pannier</h4>
+            <h3 onClick={()=>props.history.push('/cartItems')}> Panier</h3>
             <div className="tot_cart"><i className="fas fa-shopping-cart"></i>
             <p className="pannier">{cartItems.length}</p>
         </div>
         </div>
-        <Fade bottom cascade>
-        <div className="part1">
-        {menus.map(el=><div className="restoList" key={el.id}>
-                <img className="imgResto"  src={el.img} alt="image"/>
-                <div style={{display:"block"}} >
-                <h4>{el.menuName}</h4>
-                <h5>{el.price} dt </h5></div>
-                <button className="btn1" onClick={()=>dispatch(addItem(el))}>Ajouter au pannier</button>
-            </div>)
-        }
+        <div className="part_menu"  >
+        {menus.map(el=><div className="menu" key={el.id} >
+            <div onClick={()=>(openModal(popUp))}> 
+                <img className="imgmenu" src={el.img} alt="image"/>
+                <div className="menu_p"><h3>{el.menuName}</h3>
+                <h5>{el.price} dt </h5>
+                </div>
+            </div>
+                <button className="btn_menu" onClick={()=>dispatch(addItem(el))}>
+                <b>Ajouter au panier</b>{" "}<i className="fas fa-cart-plus"></i></button>
+               
+            </div>)}
         </div>
-        </Fade>
+        <div> {popUp && (<Modal isOpen={true} onRequestClose={closeModal} >
+  
+          <div>
+              <button onClick={()=>closeModal({popUp:null})}><i className="fas fa-times"></i></button>
+            </div>
+       
+    
+    
+       
+    </Modal>)}</div>
     </div>
-    )
-};
+    )};
 export default MenuList;

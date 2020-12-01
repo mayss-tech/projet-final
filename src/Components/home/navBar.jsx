@@ -12,12 +12,10 @@ const NavBar = (props) => {
     <div className="bar">
         <img  className="logo" src={logo} alt="logo" ></img>    
         <p onClick={()=>props.history.push('/')} ><i className="fas fa-home"></i> <b>Home</b></p>
-        
-        { isAuth ?
-        <i><p><Link to="/" onClick={()=>dispatch(logout())}>Se déconnecter</Link></p></i> : 
-        <i><p><Link to="/login">Se connecter</Link></p></i> }
-
         <p onClick={()=>props.history.push('/contact')} ><i className="fas fa-comment-dots"></i><b>Contactez-nous</b></p>
+        { isAuth ?
+        <p><b><Link to="/" className="p_bar" onClick={()=>dispatch(logout())}><i className="fas fa-user-alt"></i>Se déconnecter</Link></b></p> : 
+        <p><b><Link className="p_bar" to="/login"><i className="fas fa-user-alt"></i>Se connecter</Link></b></p>}
     </div> 
     </Route> )}
 export default withRouter( NavBar) ;
