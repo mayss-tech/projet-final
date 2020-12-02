@@ -1,7 +1,8 @@
 import {ADD_ITEM,
         REMOVE_ITEM,
         INCREASE_ITEM,
-        DECREASE_ITEM
+        DECREASE_ITEM,
+        ADD
         } from "../constants/action-types";
 
 const initialState={
@@ -41,6 +42,11 @@ const cartReducer =(state=initialState ,{ type,payload})=>{
                 cartItems : state.cartItems.map(el=>el._id===payload._id
                 ? {...el,qtn: el.qtn-1} : el)
         }
+        case ADD:
+            return{
+                ...state,
+                cartItems: [...state.cartItems,payload]
+            }
         default:
             return state
 }};

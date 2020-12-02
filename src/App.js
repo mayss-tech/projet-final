@@ -11,6 +11,7 @@ import RestoList from './Components/restaurant/restaurantList';
 import MenuList from './Components/restaurant/menuList';
 import Cart from './Components/shoppingCart/cart';
 import Order from './Components/shoppingCart/order';
+import ProfileAdmin from './Components/loginUser/ProfileAdmin';
 function App() {
   return (<BrowserRouter>
     
@@ -21,9 +22,10 @@ function App() {
     <Route exact path="/login" component={ (props)=>< Login {...props}/> }/>
     <Route exact path='/profile' component={ (props)=><Profile {...props}/> }/>
     <Route exact path='/resto/restoList' component={(props)=>  <RestoList {...props}  />}/>
-    <Route exact path='/menuList' component={(props)=>  <MenuList {...props} />}/>
+    <Route exact path='/menuList/:id' component={(props)=>  <MenuList {...props} />}/>
     <Route exact path='/cartItems' component={(props)=>  <Cart {...props} />}/>
     <Route exact path='/order' component={(props)=>  <Order {...props} />}/>
+    <Route exact path='/admin' component={()=>  <ProfileAdmin  />}/>
     </BrowserRouter> );
 }
 

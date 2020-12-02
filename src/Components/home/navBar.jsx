@@ -2,7 +2,7 @@ import React from 'react';
 import logo from '../images/logos.png';
 import { useDispatch, useSelector } from 'react-redux';
 import {logout} from '../JS/actions/userAction';
-import { Route, withRouter,Link } from 'react-router-dom';
+import { Route, withRouter, Link } from 'react-router-dom';
 
 const NavBar = (props) => {
     const isAuth = useSelector((state) => state.userReducer.isAuth);

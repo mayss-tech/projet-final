@@ -17,7 +17,7 @@ const Profile = () => {
     <img src="https://www.mid-day.com/Resources/midday/images/loader.gif" style={{width:'100%',height:'100vh'}}alt="gif"/>
     ) : !isAuth ? (
     <Redirect to='/login' />
-    ) : (
+    ) : isAuth.role=="admin" ?( <Redirect to="/admin"/>) :(
     <div >
         <p style={{position:"absolute",fontSize:'18px', marginLeft:'85vw'}}> 
         Bon apétit {JSON.stringify(user.name)}</p>

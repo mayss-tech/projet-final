@@ -3,7 +3,6 @@ import {fetchRestaurantBeginAsync} from '../JS/actions/restaurantAction';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Rate from './rate';
-
 const RestoList = (props) => {
     const dispatch = useDispatch();
     const restaurants= useSelector((state) => state.restoReducer.restaurants);
@@ -26,7 +25,7 @@ const RestoList = (props) => {
                 </div>
                 <p className="rating">{el.rate }<Rate/></p>
                 <div ><button  className="btn_resto"
-                onClick={()=>props.history.push("/menuList")} >
+                onClick={()=>{ console.log(el._id);props.history.push("/menuList/"+el.menu[0])}} >
                 Voir menu</button></div>
             </div>)
         }

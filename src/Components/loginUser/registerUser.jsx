@@ -33,7 +33,7 @@ const Register = () => {
 };
     return ( <div className="block1" >
     {loading? (<img src="https://www.mid-day.com/Resources/midday/images/loader.gif" style={{width:'100%',height:'100vh'}}alt="gif"/>)
-   : user? (<Redirect to='/profile'/>):(
+    : user? (<Redirect to='/profile'/>):(
     <div className="register">
         <p className="p1"> Prenez quelques minutes pour vous inscrire</p>
         
@@ -54,7 +54,7 @@ const Register = () => {
         type="email" 
         placeholder="e-mail" /></div>
 
-        <div className="re_m" > 
+        <div className="re_m" ><span>***</span> 
         <input  onChange={(e)=>setPassword(e.target.value)  }
         type="password"
         placeholder="mot de passe"/></div>

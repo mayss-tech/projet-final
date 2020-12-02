@@ -1,13 +1,18 @@
 import {ADD_ITEM,
         REMOVE_ITEM,
         INCREASE_ITEM,
-        DECREASE_ITEM
+        DECREASE_ITEM,
+        ADD
         } from '../constants/action-types';
 
-export const addItem =(newItem)=>(dispatch,getState) =>{
+export const addItem =(newItem,url,
+    title,
+    description)=>(dispatch,getState) =>{
     dispatch({
         type: ADD_ITEM,
-        payload:newItem
+        payload:newItem,url,
+        title,
+        description
     })
     localStorage.getItem('cartItems',JSON.stringify(getState().cartItems))
 };
@@ -20,18 +25,30 @@ export const removeItem =(id)=>(dispatch,getState)=>{
     localStorage.getItem('cartItems',JSON.stringify(getState().cartItems))
 };
 
-export const increaseItem =(id,qtn)=>(dispatch)=>{
+export const increaseItem =(el)=>(dispatch)=>{
     dispatch({
         type:INCREASE_ITEM,
-        payload : id,qtn
+        payload : el
     })
 };
 
-export const decreaseItem =(id,qtn)=>(dispatch)=>{
+export const decreaseItem =(el)=>(dispatch)=>{
     dispatch({
         type: DECREASE_ITEM,
-        payload : id,qtn
+        payload : el
     })
 };
+
+
+export const addProduct = (url,
+    title,
+    description) =>(dispatch)=> {
+    dispatch(
+        {type: ADD,
+        payload: url,
+              title,
+              description}
+        )
+  };
 
 
