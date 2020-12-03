@@ -161,9 +161,6 @@ margin-left: 1vh;
   border: solid rgb(163, 129, 16) 1.5px;
   margin-bottom:0.5vh ;
 }
-.part1{
-  margin-top:15%;
-}
 .rate{
   display: none;
 }
@@ -256,6 +253,7 @@ flex-wrap:wrap;
   -o-border-radius: 0.5vw;
 }
 .menu_p{
+  cursor: pointer;
   text-align: center;
   margin-top: 5vh;
 }
@@ -272,49 +270,136 @@ flex-wrap:wrap;
   padding-right: 0.5vw;
 }
 .imgmenu{
+  cursor: pointer;
   width:20vw;
   height: 25vh;
   border-radius:0.5vw 0.5vw 0vw 0vw;
 }
-/*popUp page*/
-.popUp{
-  position: absolute;
-  margin-top:5%
-}
 /* cart page */
 .cart{
-  margin-top: 8%;
-  display: flex;
-  justify-content: space-around;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  display: block;
+  margin-right:20vw;
+  margin-left:20vw
 }
 .cart_header{
   color:#B48B47;
   margin-top:-14.3%;
 }
 .cart_p{
-  margin-top:2vh;
   margin-left: 2vh
 }
 .btn1_cart{
-  color:#B48B47;
   background: none;
   border: none;
   outline: none;
   cursor: pointer;
   size:30vw;
 }
+.btn1_cart>i{
+  width:40vw
+}
+.fa-trash-alt{
+  font-size:18px
+}
+.inc_dec>h4{
+  margin-left: 0.1vw;
+}
+
 .btn2_cart{
   background-color: #C29638;
   outline: none;
   border-radius: 0.3vw;
-  margin-left:16vw;
-  margin-top:4vh ;
-  margin-bottom:2vh ;
   padding-top: 1vh;
   padding-bottom: 1vh;
   padding-left: 0.5vw;
   padding-right: 0.5vw;
 }
+.cart_detail{
+  display: flex;
+  
+}
 .total_cart{
+  display: flex;
+  justify-content: space-around;
+  margin-right:20vw;
+  margin-left:20vw
+}
+.total_cart>h4{
+  margin-right: 47vw;
+}
+.tot{
+display: block;
+}
+.img_cart{
+  height: 18vh;
+  width: 22vh;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  margin-right: 4vw;
+}
+.title_cart{
+  margin-right:18vw;
+  text-align: center;
+}
+/*profile_user page */
+.profile_user{
+  display:block;
+}
+.user{
+  margin-top: -6.3%;
+  height: 8%;
+  width:100%;
+  position: fixed;
+  background-color: rgba(5, 4, 4, 0.815);
+  color:#B48B47;
+}
+/* order page */
+.order{
+  margin-top: 12%;
+  margin-right: 30vw;
+  margin-left: 30vw;
+}
+.order>h3{text-align: center;}
+.order_details{
+  border: 1px solid black;
+  padding-right: 5px;
+}
+/* admin profile*/
+.admin{
+margin-left:15vw;
+margin-top: -7.3%;
+height: 8%;
+width:100%;
+position: fixed;
+background-color: rgba(5, 4, 4, 0.815);
+color:#B48B47;
+}
+.admin>h3{
+  margin-left: 1vw;
+}
+.dashboard_pat1{
+  margin-top: 13%; 
   display:flex
+}
+.dashboard_pat2{
+  background-color: rgba(5, 4, 4, 0.774);
+  color:#B48B47;
+  width:15vw;
+  position: fixed;
+  height: 100vh;
+  margin-top: -7.3%;
+}
+.dashboard_pat2>p{
+  margin-top:20vh
+}
+.dashboard_pat3{
+  margin-left: 23vw;
+}
+.new_Obj{
+  display :flex;
 }

@@ -25,7 +25,7 @@ export const register = (newUser) => async (dispatch) => {
     } catch (error) {
     dispatch({
         type: REGISTER_FAIL,
-        payload: error.response,
+        payload: error.response.data,
     });
     }
 };
@@ -48,7 +48,6 @@ export const login = (cred) => async (dispatch) => {
     });
     }
 };
-
 export const getProfile = () => async (dispatch) => {
     const token = localStorage.getItem('token');
     const config = {
@@ -68,12 +67,12 @@ export const getProfile = () => async (dispatch) => {
     } catch (error) {
     dispatch({
         type: GET_PROFILE_FAIL,
-        payload: error.response,
+        payload: error.response.data,
     });
     }
 };
 
 export const  logout =() =>(dispatch)=>{
-    localStorage.removeItem('token');
     dispatch({type:LOGOUT})
+    localStorage.removeItem('token');
 }

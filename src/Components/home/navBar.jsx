@@ -16,6 +16,7 @@ const NavBar = (props) => {
         { isAuth ?
         <p><b><Link to="/" className="p_bar" onClick={()=>dispatch(logout())}><i className="fas fa-user-alt"></i>Se déconnecter</Link></b></p> : 
         <p><b><Link className="p_bar" to="/login"><i className="fas fa-user-alt"></i>Se connecter</Link></b></p>}
+        
     </div> 
     </Route> )}
 export default withRouter( NavBar) ;

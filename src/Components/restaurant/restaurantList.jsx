@@ -16,16 +16,16 @@ const RestoList = (props) => {
         <img src="https://www.mid-day.com/Resources/midday/images/loader.gif" style={{width:'100%',height:'100vh'}}alt="gif"/>
     ) :error? ( <h1 style={{marginTop:'15%', marginLeft:'40%'}}>404 Not Found </h1>
     ) : ( 
-        <div className="part1"> 
+        <div> 
         {       restaurants.map(el=><div className="restoList" key={el.id}>
                 <img className="imgResto" src={el.image} alt="image"/>
                 <div  className="desc">
                 <h4>{el.name}</h4>
                 <p>{el.desc}</p>
                 </div>
-                <p className="rating">{el.rate }<Rate/></p>
+                <Rate rating={el.rate}/>
                 <div ><button  className="btn_resto"
-                onClick={()=>{ console.log(el._id);props.history.push("/menuList/"+el.menu[0])}} >
+                onClick={()=>{props.history.push("/menuList/"+el.menu[0])}} >
                 Voir menu</button></div>
             </div>)
         }

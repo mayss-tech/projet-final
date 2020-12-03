@@ -24,7 +24,8 @@ const cartReducer =(state=initialState ,{ type,payload})=>{
                 ...state,
                 cartItems:[...state.cartItems,item]   
                 }
-            }break;
+            }
+
         case REMOVE_ITEM:
             return{
                 ...state,

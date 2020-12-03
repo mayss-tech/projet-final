@@ -5,50 +5,44 @@ import {ADD_ITEM,
         ADD
         } from '../constants/action-types';
 
-export const addItem =(newItem,url,
-    title,
-    description)=>(dispatch,getState) =>{
+export const addItem =(newItem)=>(dispatch,getState) =>{
     dispatch({
         type: ADD_ITEM,
-        payload:newItem,url,
-        title,
-        description
+        payload:newItem
     })
-    localStorage.getItem('cartItems',JSON.stringify(getState().cartItems))
+    localStorage.setItem("cart", JSON.stringify(getState().cartItems))
 };
 
-export const removeItem =(id)=>(dispatch,getState)=>{
+export const removeItem =(id)=>(dispatch)=>{
+
     dispatch({
         type:REMOVE_ITEM,
         payload:id
     })
-    localStorage.getItem('cartItems',JSON.stringify(getState().cartItems))
+    
 };
 
-export const increaseItem =(el)=>(dispatch)=>{
+export const increaseItem =(el)=>(dispatch,getState)=>{
+
     dispatch({
         type:INCREASE_ITEM,
         payload : el
     })
 };
 
-export const decreaseItem =(el)=>(dispatch)=>{
+export const decreaseItem =(el)=>(dispatch,getState)=>{
     dispatch({
         type: DECREASE_ITEM,
         payload : el
     })
 };
 
-
-export const addProduct = (url,
-    title,
-    description) =>(dispatch)=> {
+export const addProduct = (newProduct) =>(dispatch,getState)=> {
     dispatch(
         {type: ADD,
-        payload: url,
-              title,
-              description}
+        payload:newProduct }
         )
-  };
+    localStorage.setItem("cart", JSON.stringify(getState().cartItems))
+};
 
 
