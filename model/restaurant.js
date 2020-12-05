@@ -1,13 +1,14 @@
 const mongoose=require('mongoose');
-var Schema = mongoose.Schema;
+
 
 const restaurantSchema=mongoose.Schema({
     image: String,
     name: String,
     desc:String,
+    rate:[],
     menu:[
-        {type: Schema.Types.ObjectId,
-        ref:"Menu", }
+        {type: mongoose.Schema.Types.ObjectId,
+        ref:"Menu" }
     ]
 
 });

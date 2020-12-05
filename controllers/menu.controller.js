@@ -1,20 +1,32 @@
 const Menu = require ('../model/menu.js');
-
+const Restaurant = require ('../model/restaurant.js');
+const User = require('../Model/User.js');
 exports.menuList = async (req, res) =>{
+    const {idUser,img,menuName,price,qtn}=req.body
     try {
-    const menu = await Menu.create(req.body);
-    res.status(201).json(menu)
-    const restaurant = await Restaurant.findOneAndUpdate({ _id: req.params.id }, { menu: menu._id }, { new: true }); 
-    res.status(201).json(restaurant);
+        
+    const newMenu = await new Menu({
+        img,menuName,price,qtn
+    })
+    newMenu.save();
+    console.log(newMenu)
+    const fuser = await User.findById(idUser)
+    
+    const restaurant = await Restaurant.findById(fuser.idRestaurant[0]);
+    restaurant.menu.push(newMenu._id)
+    await Restaurant.findByIdAndUpdate(fuser.idRestaurant[0],{
+        menu: restaurant.menu
+    })
+    res.status(201).json(restaurant)
     } catch (error) {
     console.error(error)
     res.status(500).json({errors:error})
     }};
 
 exports.menuFind = async (req,res)=> {
-    try {
-    const menu = await Menu.find({});
-    res.status(201).json(menu);
+    try{
+        const menu = await Menu.find()
+        res.status(201).json(menu)
     } catch (error) {
     console.error(error)
     res.status(500).json({errors:error})

@@ -1,12 +1,16 @@
 const mongoose=require('mongoose');
 
 const userSchema=mongoose.Schema({
+    role:{
+        type:String,
+        default:"user"
+    },
     name:{
         type: String,
         required:true
     },
     telephone:{
-        type:Number,
+        type:String,
         required:true
     },
     email:{
@@ -18,6 +22,7 @@ const userSchema=mongoose.Schema({
         required:true
     },
     adress:String,
-    codePostal:Number
+    codePostal:Number,
+    idRestaurant:[{type:mongoose.Schema.Types.ObjectId , ref:'Restaurant'}],
 });
 module.exports = User = mongoose.model('user',userSchema)
