@@ -2,11 +2,11 @@ import React,{useState,useEffect} from 'react';
 import {FaStar} from 'react-icons/fa';
 const Rate = (props) => {
     const starRate =props.rating;
-    const [rating, setRating]=useState([JSON.parse(localStorage.getItem("rate" || "[]"))]);
+    const [rating, setRating]=useState([]);
     
-    useEffect(() => {
-        localStorage.setItem("rate", JSON.stringify(rating))
-    }, [rating]);
+    // useEffect(() => {
+    //     localStorage.setItem("rate", JSON.stringify(rating))
+    // }, [rating]);
 
     return ( <div className={starRate}>
 {[...Array(5)].map((x,y)=>{ const ratingValue=y+1; 
@@ -16,7 +16,7 @@ const Rate = (props) => {
             name="rating" 
             value={ratingValue} 
             className="rate" 
-            onClick={()=>setRating(ratingValue)}/>
+            onClick={()=>console.log ((setRating(ratingValue)))}/>
             < FaStar className="fa-star" color={ratingValue <= rating?"#C29638":"#747474"}/>
         </label> } 
             ) } 

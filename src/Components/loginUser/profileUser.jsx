@@ -24,16 +24,16 @@ const Profile = () => {
   ) : isAuth.role == "admin" ? (
     <div>
       <div className="admin">
-        <h3>Bonjour !!</h3>
+        <h3>Bonjour {user.name} !!</h3>
       </div>
-      <ProfileAdmin />
+      <ProfileAdmin/>
     </div>
   ) : (
     <div className="profile_user">
       <div className="user">
         <p
           style={{ fontSize: "22px", marginLeft: "1.5vw", marginTop: "1.2vh" }}
-        >profile
+        > Bon apétit {user.name}
         </p>
       </div>
       <div style={{ marginTop: "25vh" }}>

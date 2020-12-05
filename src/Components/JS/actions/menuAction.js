@@ -8,12 +8,12 @@ import {
     ADD_MENU_FAILURE
     } from '../constants/action-types';
 
-export const fetchMenuAsync = () => async (dispatch) => {
+export const fetchMenuAsync = (id) => async (dispatch) => {
     dispatch({
         type: FETCH_MENU_BEGIN,
     });
     try {
-        const menus = await axios.get('/dataMenu/menuList');
+        const menus = await axios.post('/dataRestaurant/restaurantDetails',{id});
         dispatch({
             type:FETCH_MENU_SUCCESS ,
             payload: menus.data,

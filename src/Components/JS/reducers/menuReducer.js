@@ -10,7 +10,8 @@ import {
 const initialState = {
     menus: [],
     loading: false,
-    error: null
+    error: null,
+    
 };
 const menuReducer = (state = initialState, { type, payload }) => {
     switch (type) {

@@ -5,17 +5,23 @@ import { addItem } from "../JS/actions/shopping-cartAction";
 import PopUp from "./PopUp";
 
 const MenuList = (props) => {
-  const menus = useSelector((state) => state.menuReducer.menus);
+  const menus= useSelector((state) => state.menuReducer.menus);
+
   const loading = useSelector((state) => state.menuReducer.loading);
   const error = useSelector((state) => state.menuReducer.error);
   const cartItems= useSelector((state) => state.cartReducer.cartItems); 
   const dispatch = useDispatch();
+  const [menuDetails,setMenuDetails]=useState([])
+  // useEffect(() => {
+  //   dispatch(fetchMenuAsync());
+  // },[]);
 
-  useEffect(() => {
-    dispatch(fetchMenuAsync());
-  }, []);
+   useEffect(() => {
+    setMenuDetails (menus.filter(el=>el._id===props.match.params.id))
+   }, [menus]);
+
   const [popUp, setPopUp] = useState(null);
-  
+
   const openModal = () => {
     setPopUp({ popUp });
   };
@@ -40,7 +46,7 @@ const MenuList = (props) => {
         </div>
       </div>
       <div className="part_menu">
-        {menus.filter(el=>el._id===props.match.params.id).map((el) => (
+              {menus.map((el) => (
             <div className="menu" key={el.id}>
               <div onClick={() => openModal(popUp)}>
                 <img className="imgmenu" src={el.img} alt="image" />

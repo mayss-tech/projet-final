@@ -10,7 +10,7 @@ const RestoList = (props) => {
   const error = useSelector((state) => state.restoReducer.error);
   useEffect(() => {
     dispatch(fetchRestaurantBeginAsync());
-  }, []);
+  },[]);
   console.log("restaurants", restaurants);
   return loading ? (
     <img
@@ -29,12 +29,12 @@ const RestoList = (props) => {
             <h4>{el.name}</h4>
             <p>{el.desc}</p>
           </div>
-          <Rate rating={el.rate} />
+          <Rate  rating= {Number(el.rate)} />
           <div>
             <button
               className="btn_resto"
               onClick={() => {
-                props.history.push("/menuList/" +el.menu[0]);
+                props.history.push("/menuList/"+el._id);
               }}
             >
               Voir menu
