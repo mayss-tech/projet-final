@@ -29,5 +29,12 @@ export const REMOVE_ITEM = 'REMOVE_ITEM';
 export const INCREASE_ITEM = 'INCREASE_ITEM';
 export const DECREASE_ITEM = 'DECREASE_ITEM';
 
-//shopping-cart admin
-export const ADD = "ADD"
+//shopping-cart-admin action-type
+export const ADD_RESTAURANT_BEGIN  = 'ADD_RESTAURANT_BEGIN';
+export const ADD_NEW_RESTAURANT = 'ADD_NEW_RESTAURANT';
+export const ADD_RESTAURANT_FAILURE ='ADD_RESTAURANT_FAILURE';
+export const REMOVE_RESTAURANT='REMOVE_RESTAURANT';
+
+export const ADD_MENU_BEGIN  = 'ADD_MENU_BEGIN';
+export const ADD_NEW_MENU = 'ADD_NEW_MENU';
+export const ADD_MENU_FAILURE ='ADD_MENU_FAILURE';

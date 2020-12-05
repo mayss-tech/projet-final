@@ -1,24 +1,51 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import {
-  addItem,
-  addProduct,
-  removeItem,
-} from "../JS/actions/shopping-cartAction";
-import { useSelector } from "react-redux";
-import Rate from "../restaurant/rate";
+import React, { useState} from "react";
+import { useDispatch ,useSelector } from "react-redux";
+import {addNewRestaurant} from "../JS/actions/restaurantAction";
+import {addNewMenu} from '../JS/actions/menuAction';
+
+
 const ProfileAdmin = () => {
-  const [titleResto, setTitleResto] = useState("");
-  const [titleMenu, setTitleMenu] = useState("");
-  const [urlMenu, setUrlMenu] = useState("");
-  const [urlResto, setUrlResto] = useState("");
-  const [descriptionResto, setDescriptionResto] = useState("");
-  const [descriptionMenu, setDescriptionMenu] = useState("");
-  const [priceMenu, setPriceMenu] = useState("");
-  const [qtnMenu, setQtnMenu] = useState("");
-  const [rateResto, setRateResto] = useState(0);
+  const [image, setImage] = useState("");
+  const [name, setName] = useState("");
+  const [desc, setDesc] = useState("");
+  const [rate, setRate] = useState(0);
+
+  const [img, setImg] = useState("");
+  const [menuName, setMenuName] = useState("");
+  const [menuDesc, setMenuDesc] = useState("");
+  const [price, setPrice] = useState("");
+  const [qtn, setQtn] = useState("");
+  const restaurants = useSelector((state) => state.restoReducer.restaurants);
+
+  const user = useSelector((state) => state.userReducer.user);
+  const menus = useSelector((state) => state.menuReducer.menus);
   const dispatch = useDispatch();
-  const cartItems = useSelector((state) => state.cartReducer.cartItems);
+    const addResto=()=>{
+    dispatch(addNewRestaurant({
+      idUser:user._id,
+      image: image,
+      name: name,
+      desc: desc,
+      rate: rate
+    }))}
+
+    const addMenu=()=>{
+      dispatch(addNewMenu({
+          idUser:user._id,
+          img: img,
+          menuName: menuName,
+          menuDesc: menuDesc,
+          price: price,
+          qtn: qtn
+      }))
+    
+      // useEffect(() => {
+      //     dispatch(menu_details(
+      //     user.idRestaurant
+      //    ))
+      // });
+
+    }
   return (
     <div className="dashboard_pat1">
       <div className="dashboard_pat2">
@@ -32,124 +59,86 @@ const ProfileAdmin = () => {
             type="text"
             placeholder="Url du restaurant"
             onChange={(e) => {
-              setUrlResto(e.target.value);
+            setImage(e.target.value);
             }}
           />
           <input
             type="text"
             placeholder="Nom du restaurant"
             onChange={(e) => {
-              setTitleResto(e.target.value);
+              setName(e.target.value);
             }}
           />
           <input
             type="text"
             placeholder="Description"
             onChange={(e) => {
-              setDescriptionResto(e.target.value);
+              setDesc(e.target.value);
             }}
           />
           <input
             type="number"
             placeholder="Rate"
             onChange={(e) => {
-              setRateResto(e.target.value);
+              setRate(e.target.value);
             }}
           />
           <button
-            onClick={() =>
-              dispatch(
-                addProduct({
-                  id: Date.now(),
-                  urlResto: urlResto,
-                  titleResto: titleResto,
-                  descriptionResto: descriptionResto,
-                  rateResto: rateResto,
-                })
-              )
-            }
+            onClick={() =>{addResto()}}
           >
             +
           </button>
         </fieldset>
+{restaurants.filter(el=>el.idUser===user._id).map(el=><div key={el.id}>
+  <h4>{el.name}</h4>
 
-        {cartItems.map((el) => (
-          <div key={el.id} className="new_Obj">
-            <img src={el.urlResto} alt="url" />
-            <p>{el.titleResto}</p>
-            <p>{el.descriptionResto}</p>
-            <Rate rating={el.rateResto} />
-            <button onClick={() => dispatch(removeItem(el._id))}>
-              supprimer
-            </button>
-          </div>
-        ))}
+</div>)}
         <fieldset>
           <legend>Ajouter votre menu</legend>
           <input
             type="text"
             placeholder="Url du menu"
             onChange={(e) => {
-              setUrlMenu(e.target.value);
+              setImg(e.target.value);
             }}
           />
           <input
             type="text"
             placeholder="Nom du menu"
             onChange={(e) => {
-              setTitleMenu(e.target.value);
+              setMenuName(e.target.value);
             }}
           />
           <input
             type="text"
             placeholder="Description"
             onChange={(e) => {
-              setDescriptionMenu(e.target.value);
+              setMenuDesc(e.target.value);
             }}
           />
           <input
             type="number"
             placeholder="Prix"
             onChange={(e) => {
-              setPriceMenu(e.target.value);
+              setPrice(e.target.value);
             }}
           />
           <input
             type="number"
             placeholder="Qtn"
             onChange={(e) => {
-              setQtnMenu(e.target.value);
+              setQtn(e.target.value);
             }}
           />
-          <button
-            onClick={() =>
-              dispatch(
-                addItem({
-                  id: Date.now(),
-                  urlMenu: urlMenu,
-                  titleMenu: titleMenu,
-                  descriptionMenu: descriptionMenu,
-                  priceMenu: priceMenu,
-                  qtnMenu: qtnMenu,
-                })
-              )
-            }
+          <button onClick={()=>{addMenu()}}
           >
             +
-          </button>
+          </button >
         </fieldset>
-        {cartItems.map((el) => (
-          <div key={el.id}className="new_Obj" >
-            <img src={el.urlMenu} alt="url" />
-            <p>{el.titleMenu}</p>
-            <p>{el.descriptionMenu}</p>
-            <p>{el.priceMenu} </p>
-            <p>{el.qtnMenu} </p>
-            <button onClick={() => dispatch(removeItem(el.id))}>
-              supprimer
-            </button>
-          </div>
-        ))}
+        {menus.map((el) => (
+            <div>
+              <h3>{el.menuName}</h3>
+            </div>))}
       </div>
     </div>
   );

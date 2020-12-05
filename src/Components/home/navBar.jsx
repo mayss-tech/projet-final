@@ -5,7 +5,6 @@ import {logout} from '../JS/actions/userAction';
 import { Route, withRouter, Link } from 'react-router-dom';
 
 const NavBar = (props) => {
-    const isAuth = useSelector((state) => state.userReducer.isAuth);
     const dispatch = useDispatch();
 
     return ( <Route>
@@ -13,9 +12,9 @@ const NavBar = (props) => {
         <img  className="logo" src={logo} alt="logo" ></img>    
         <p onClick={()=>props.history.push('/')} ><i className="fas fa-home"></i> <b>Home</b></p>
         <p onClick={()=>props.history.push('/contact')} ><i className="fas fa-comment-dots"></i><b>Contactez-nous</b></p>
-        { isAuth ?
-        <p><b><Link to="/" className="p_bar" onClick={()=>dispatch(logout())}><i className="fas fa-user-alt"></i>Se déconnecter</Link></b></p> : 
-        <p><b><Link className="p_bar" to="/login"><i className="fas fa-user-alt"></i>Se connecter</Link></b></p>}
+        { JSON.parse(localStorage.getItem("token") === null) ?<p><b><Link className="p_bar" to="/login"><i className="fas fa-user-alt"></i>Se connecter</Link></b></p>:
+        <p><b><Link to="/" className="p_bar" onClick={()=>dispatch(logout())}><i className="fas fa-user-alt"></i>Se déconnecter</Link></b></p> 
+        }
         
     </div> 
     </Route> )}

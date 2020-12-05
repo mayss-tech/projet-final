@@ -6,8 +6,9 @@ const middleware = [thunk];
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const initialState = {
-        // cartItems: localStorage.getItem('cartItems')? JSON.parse(localStorage.getItem('cartItems')):[]
-    qtn:0
+        // restaurants:JSON.parse(localStorage.getItem("restaurants" || "[]")),
+        // cartItems:JSON.parse(localStorage.getItem("cartItems" || "[]")),
+        // menus: JSON.parse(localStorage.getItem("menus" || "[]"))
     }
     
 const store = createStore(

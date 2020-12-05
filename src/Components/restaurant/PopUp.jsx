@@ -17,7 +17,7 @@ const PopUp = ({ isOpen, closeModal, resto }) => {
           />
           <div style={{ maxWidth: "30vw", marginTop: "18vh" }}>
             <h3>{resto.menuName}</h3>
-            <h5 style={{ marginBottom: "5vh" }}>{resto.desc}</h5>
+            <h5 style={{ marginBottom: "5vh" }}>{resto.menuDesc}</h5>
             <h4> Prix: {resto.price} dt </h4>
           </div>
           <div style={{ marginLeft: "28vw", marginTop: "0vh" }}>

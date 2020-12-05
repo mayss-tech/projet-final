@@ -24,8 +24,8 @@ const Profile = () => {
   ) : isAuth.role == "admin" ? (
     <div>
       <div className="admin">
-        <h3>Bonjour {user.name} !!</h3>
-      </div>{" "}
+        <h3>Bonjour !!</h3>
+      </div>
       <ProfileAdmin />
     </div>
   ) : (
@@ -33,13 +33,11 @@ const Profile = () => {
       <div className="user">
         <p
           style={{ fontSize: "22px", marginLeft: "1.5vw", marginTop: "1.2vh" }}
-        >
-          Bon apétit {user.name} {"  "} <i className="fas fa-utensils"></i>
+        >profile
         </p>
       </div>
       <div style={{ marginTop: "25vh" }}>
-        {" "}
-        <RestoList />{" "}
+      <RestoList />
       </div>
     </div>
   );

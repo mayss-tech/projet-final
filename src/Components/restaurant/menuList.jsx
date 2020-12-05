@@ -15,7 +15,7 @@ const MenuList = (props) => {
     dispatch(fetchMenuAsync());
   }, []);
   const [popUp, setPopUp] = useState(null);
- 
+  
   const openModal = () => {
     setPopUp({ popUp });
   };

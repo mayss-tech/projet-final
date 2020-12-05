@@ -2,7 +2,9 @@ import {
     FETCH_MENU_BEGIN,
     FETCH_MENU_SUCCESS,
     FETCH_MENU_FAILURE,
-    ADD_ITEM
+    ADD_MENU_BEGIN,
+    ADD_NEW_MENU,
+    ADD_MENU_FAILURE
     } from '../constants/action-types';
 
 const initialState = {
@@ -29,19 +31,21 @@ const menuReducer = (state = initialState, { type, payload }) => {
             loading:false,
             error:payload
         };
-    case ADD_ITEM : 
-    const item = payload;
-    const isExist = state.menus.find(el=>el.id===item.id)
-    if(isExist){
-            return {
+    case ADD_MENU_BEGIN:
+        return {
             ...state,
-            menus : state.menus.map(el=>el.id===isExist.id?el:item)
-            }
-    }else{
+            loading:true
+        };
+    case ADD_NEW_MENU:
             return{
-            ...state,
-            menus:[...state.menus,item]   
+                ...state,
+            menus:[...state.menus,payload]   
             }
+    case ADD_MENU_FAILURE:
+        return {
+            ...state,
+            loading:false,
+            error:payload
         }
     default:
         return state;

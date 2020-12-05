@@ -44,7 +44,6 @@ export const login = (cred) => async (dispatch) => {
     } catch (error) {
     dispatch({
         type: LOGIN_FAIL,
-        payload: error.response.data,
     });
     }
 };
@@ -67,7 +66,6 @@ export const getProfile = () => async (dispatch) => {
     } catch (error) {
     dispatch({
         type: GET_PROFILE_FAIL,
-        payload: error.response.data,
     });
     }
 };

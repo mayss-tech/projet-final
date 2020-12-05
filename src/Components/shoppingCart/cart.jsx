@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   removeItem,
   increaseItem,
-  decreaseItem,
+  decreaseItem
 } from "../JS/actions/shopping-cartAction";
 
 const Cart = (props) => {
