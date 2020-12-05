@@ -31,24 +31,25 @@ exports.restaurantFind = async (req,res)=>{
     res.status(500).json({errors:error})
     }
 }
-// exports.restaurantFind = async (req,res) => {
-//     const {id}=req.body
-//     try {
-//         const restaurant = await Restaurant.findById(id);
-//         const menuDetails =await Menu.find({_id: restaurant.menu})
-//     console.log(menuDetails)
-//     const payload ={
-//         image: restaurant.image,
-//         name: restaurant.name,
-//         desc: restaurant.desc,
-//         rate: restaurant.rate,
-//         details:menuDetails,
-//     }
-//     res.status(201).json(payload);
-//     } catch (error) {
-//     console.error(error)
-//     res.status(500).json({errors:error})
-//     }};
+exports.restaurantDetails = async (req,res) => {
+    const {id}=req.body 
+    console.log(id)
+    try {
+        const restaurant = await Restaurant.findById(id);
+        const menuDetails =await Menu.find({_id: restaurant.menu})
+    
+    // const payload ={
+    //     image: restaurant.image,
+    //     name: restaurant.name,
+    //     desc: restaurant.desc,
+    //     rate: restaurant.rate,
+    //     details:menuDetails,
+    // }
+    res.status(200).json(menuDetails);
+    } catch (error) {
+    console.error(error)
+    res.status(500).json({errors:error})
+    }};
 
 // exports.collectionFind = async (req, res) =>{
 //     try {

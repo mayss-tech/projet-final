@@ -5,7 +5,7 @@ const restaurantSchema=mongoose.Schema({
     image: String,
     name: String,
     desc:String,
-    rate:[],
+    rate:[Number],
     menu:[
         {type: mongoose.Schema.Types.ObjectId,
         ref:"Menu" }
