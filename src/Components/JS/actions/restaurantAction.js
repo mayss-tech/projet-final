@@ -6,7 +6,10 @@ import {
     ADD_RESTAURANT_BEGIN,
     ADD_NEW_RESTAURANT,
     ADD_RESTAURANT_FAILURE,
-    SEARCH_RESTAURANT
+    SEARCH_RESTAURANT,
+    RATE_BEGIN,
+    RATE_SUCCESS,
+    RATE_FAILURE
     } from '../constants/action-types';
 
 export const fetchRestaurantBeginAsync = () => async (dispatch) => {
@@ -47,4 +50,21 @@ export const addNewRestaurant=(newResto)=>async (dispatch,getState)=>{
         })
     }
     localStorage.setItem("restaurants",JSON.stringify(getState().restoReducer.restaurants));
+}
+
+export const ratingResto=(id,ratingValue)=> async (dispatch)=>{
+    dispatch({
+        type :RATE_BEGIN,
+    })
+    try {
+        const rate = await axios.post('/dataRestaurant/rate',{id,ratingValue})
+        dispatch({
+            type:RATE_SUCCESS,
+            payload:rate.data
+        })
+        } catch (error) {
+        dispatch({
+            type:RATE_FAILURE
+        })
+    }
 }

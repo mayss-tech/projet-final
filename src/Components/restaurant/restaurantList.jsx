@@ -36,7 +36,7 @@ const RestoList = (props) => {
             <h4>  {el.name}</h4>
             <p>{el.desc}</p>
           </div>
-          <Rate  rating= {console.log(el.rate) } />
+          <Rate  rating={el.rate} />
           <div>
             <button
               className="btn_resto"

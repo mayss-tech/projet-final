@@ -5,7 +5,6 @@ import {
     ADD_MENU_BEGIN,
     ADD_NEW_MENU,
     ADD_MENU_FAILURE,
-    REMOVE_ADMIN_ITEM,
     SEARCH_MENU
     } from '../constants/action-types';
 
@@ -55,11 +54,6 @@ const menuReducer = (state = initialState, { type, payload }) => {
             ...state,
             loading:false,
             error:payload
-        }
-    case REMOVE_ADMIN_ITEM:
-        return{
-            ...state,
-            menus: state.menus.filter(el=>el.id !== payload)
         }
     default:
         return state;

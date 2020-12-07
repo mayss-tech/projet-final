@@ -224,14 +224,14 @@ margin-left: 1vh;
 }
 .search_menu>input{
   position: absolute;
-  margin-top:6.4%;
+  margin-top:1.5vh;
   padding:8px 50px ;
   outline:none;
   border-radius: 8px;
 
 }
 .i_menu{
-  margin-top: 7%;
+  margin-top: 2.5vh;
   position: absolute;
   color:#C29638;
   }
@@ -248,7 +248,7 @@ margin-left: 1vh;
   border-radius: 50%;
   position: absolute;
   top:0.1%;
-  margin-left: 2.1vw;
+  margin-left:54vw;
 }
 .tot_cart{
 margin-top:0.6%;
@@ -256,8 +256,8 @@ margin-left:1.75vw
 }
 .shopping-cart{
   display: flex;
-  position: relative;
-  margin-top:5.7%;
+  position: absolute;
+  margin-top:11.9vh;
   height: 8%;
   width:100%;
   position: fixed;
@@ -267,12 +267,14 @@ margin-left:1.75vw
   width: 50vw;
 }
 .shopping-cart>h3{
-  margin-top:2.4vh;
+  margin-top:2.5vh;
   cursor: pointer;
   color:#B98E47;
-  margin-left:86vw
+  margin-left:86vw;
+  position: absolute;
 }
 .fa-shopping-cart{
+  margin-left:52vw;
   font-size: 36px;
   color:#B98E47;
 }

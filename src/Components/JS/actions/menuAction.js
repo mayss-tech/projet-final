@@ -6,7 +6,6 @@ import {
     ADD_MENU_BEGIN,
     ADD_NEW_MENU,
     ADD_MENU_FAILURE,
-    REMOVE_ADMIN_ITEM,
     SEARCH_MENU
     } from '../constants/action-types';
 
@@ -52,11 +51,3 @@ export const addNewMenu =(newMenu)=> async (dispatch,getState)=>{
     }
     localStorage.setItem("menus",JSON.stringify(getState().menuReducer.menus))
 }
-
-export const removeMenu =(id)=>(dispatch,getState)=>{
-    dispatch({
-        type:REMOVE_ADMIN_ITEM,
-        payload:id
-    })
-    localStorage.setItem("cart", JSON.stringify(getState().menuReducer.menus))
-};

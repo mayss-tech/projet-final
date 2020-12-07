@@ -1,8 +1,7 @@
-import React, { useEffect,useState} from "react";
+import React, {useState} from "react";
 import { useDispatch ,useSelector } from "react-redux";
 import {addNewRestaurant} from "../JS/actions/restaurantAction";
-import {addNewMenu, removeMenu} from '../JS/actions/menuAction';
-import Rate from "../restaurant/rate";
+import {addNewMenu} from '../JS/actions/menuAction';
 
 const ProfileAdmin = () => {
   const [image, setImage] = useState("");
@@ -15,9 +14,7 @@ const ProfileAdmin = () => {
   const [menuDesc, setMenuDesc] = useState("");
   const [price, setPrice] = useState("");
   const [qtn, setQtn] = useState(1);
-  const restaurants = useSelector((state) => state.restoReducer.restaurants);
   const user = useSelector((state) => state.userReducer.user);
-  const menus = useSelector((state) => state.menuReducer.menus);
   const dispatch = useDispatch();
     
 
@@ -42,10 +39,6 @@ const ProfileAdmin = () => {
     }
   return (
     <div className="dashboard_pat1">
-      <div className="dashboard_pat2">
-        <p>Restaurant_détails</p>
-        <p>Order</p>
-      </div>
       <div className="dashboard_pat3">
         <fieldset>
           <legend>Ajouter votre restaurant </legend>
@@ -83,12 +76,6 @@ const ProfileAdmin = () => {
             +
           </button>
         </fieldset>
-{restaurants.map(el=><div key={el.id}>
-  <img src={el.image} src="admin"/>
-  <h4>{el.name}</h4>
-<p>{el.desc}</p>
-<p>  <Rate rating={ Number(el.rate)} />  </p>
-</div>)}
         <fieldset>
           <legend>Ajouter votre menu</legend>
           <input
@@ -131,15 +118,6 @@ const ProfileAdmin = () => {
             +
           </button >
         </fieldset>
-        {menus.map((el) => (
-            <div key={el.id}>
-              <img src={el.img} alt="menu_admin"/>
-              <h3>{el.menuName}</h3>
-              <p>{el.descMenu} </p>
-              <p>{el.price} </p>
-              <p>{el.qtn} </p>
-              <button onClick={()=>dispatch(removeMenu(el))}>-</button>
-            </div>))}
       </div>
     </div>
   );
