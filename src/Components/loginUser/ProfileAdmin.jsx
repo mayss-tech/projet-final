@@ -1,8 +1,8 @@
-import React, { useState} from "react";
+import React, { useEffect,useState} from "react";
 import { useDispatch ,useSelector } from "react-redux";
 import {addNewRestaurant} from "../JS/actions/restaurantAction";
-import {addNewMenu} from '../JS/actions/menuAction';
-
+import {addNewMenu, removeMenu} from '../JS/actions/menuAction';
+import Rate from "../restaurant/rate";
 
 const ProfileAdmin = () => {
   const [image, setImage] = useState("");
@@ -14,13 +14,14 @@ const ProfileAdmin = () => {
   const [menuName, setMenuName] = useState("");
   const [menuDesc, setMenuDesc] = useState("");
   const [price, setPrice] = useState("");
-  const [qtn, setQtn] = useState("");
+  const [qtn, setQtn] = useState(1);
   const restaurants = useSelector((state) => state.restoReducer.restaurants);
-
   const user = useSelector((state) => state.userReducer.user);
   const menus = useSelector((state) => state.menuReducer.menus);
   const dispatch = useDispatch();
-    const addResto=()=>{
+    
+
+  const addResto=()=>{
     dispatch(addNewRestaurant({
       idUser:user._id,
       image: image,
@@ -38,13 +39,6 @@ const ProfileAdmin = () => {
           price: price,
           qtn: qtn
       }))
-    
-      // useEffect(() => {
-      //     dispatch(menu_details(
-      //     user.idRestaurant
-      //    ))
-      // });
-
     }
   return (
     <div className="dashboard_pat1">
@@ -89,9 +83,11 @@ const ProfileAdmin = () => {
             +
           </button>
         </fieldset>
-{restaurants.filter(el=>el.idUser===user._id).map(el=><div key={el.id}>
+{restaurants.map(el=><div key={el.id}>
+  <img src={el.image} src="admin"/>
   <h4>{el.name}</h4>
-
+<p>{el.desc}</p>
+<p>  <Rate rating={ Number(el.rate)} />  </p>
 </div>)}
         <fieldset>
           <legend>Ajouter votre menu</legend>
@@ -136,8 +132,13 @@ const ProfileAdmin = () => {
           </button >
         </fieldset>
         {menus.map((el) => (
-            <div>
+            <div key={el.id}>
+              <img src={el.img} alt="menu_admin"/>
               <h3>{el.menuName}</h3>
+              <p>{el.descMenu} </p>
+              <p>{el.price} </p>
+              <p>{el.qtn} </p>
+              <button onClick={()=>dispatch(removeMenu(el))}>-</button>
             </div>))}
       </div>
     </div>

@@ -1,17 +1,18 @@
 import React, { useEffect } from "react";
-import { fetchRestaurantBeginAsync } from "../JS/actions/restaurantAction";
+import { fetchRestaurantBeginAsync, searchRestaurant } from "../JS/actions/restaurantAction";
 import { useDispatch, useSelector } from "react-redux";
 import { withRouter } from "react-router-dom";
 import Rate from "./rate";
 const RestoList = (props) => {
   const dispatch = useDispatch();
-  const restaurants = useSelector((state) => state.restoReducer.restaurants);
+  const x = useSelector((state) => state.restoReducer.restaurants);
   const loading = useSelector((state) => state.restoReducer.loading);
   const error = useSelector((state) => state.restoReducer.error);
+  const z = useSelector((state) => state.restoReducer.text);
   useEffect(() => {
     dispatch(fetchRestaurantBeginAsync());
-  },[]);
-  console.log("restaurants", restaurants);
+  },[dispatch]);
+
   return loading ? (
     <img
       src="https://www.mid-day.com/Resources/midday/images/loader.gif"
@@ -19,17 +20,23 @@ const RestoList = (props) => {
       alt="gif"
     />
   ) : error ? (
-    <h1 style={{ marginTop: "15%", marginLeft: "40%" }}>404 Not Found </h1>
+    <h1 style={{ marginTop: "15%", marginLeft: "40%" }}>404 Not Found</h1>
   ) : (
-    <div>
-      {restaurants.map((el) => (
+    <div className="header">
+      <div className="search">
+        <input type="text" 
+        placeholder="Chercher restaurant..."
+      onChange={(e)=>dispatch(searchRestaurant(e.target.value)) }/>
+      <i className="fas fa-search"></i>
+      </div>
+      {x.filter(el=>el.name.toLowerCase().includes(z)).map((el) => (
         <div className="restoList" key={el.id}>
-          <img className="imgResto" src={el.image} alt="image" />
+          <img className="imgResto" src={el.image} alt="menu" />
           <div className="desc">
-            <h4>{el.name}</h4>
+            <h4>  {el.name}</h4>
             <p>{el.desc}</p>
           </div>
-          <Rate  rating= {Number(el.rate)} />
+          <Rate  rating= {console.log(el.rate) } />
           <div>
             <button
               className="btn_resto"
@@ -42,6 +49,7 @@ const RestoList = (props) => {
           </div>
         </div>
       ))}
+      
     </div>
   );
 };

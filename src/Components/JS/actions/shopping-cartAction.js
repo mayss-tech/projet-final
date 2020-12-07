@@ -1,7 +1,8 @@
 import {ADD_ITEM,
         REMOVE_ITEM,
         INCREASE_ITEM,
-        DECREASE_ITEM
+        DECREASE_ITEM,
+        TOTAL
         } from '../constants/action-types';
 
 export const addItem =(newItem)=>(dispatch,getState) =>{
@@ -13,7 +14,6 @@ export const addItem =(newItem)=>(dispatch,getState) =>{
 };
 
 export const removeItem =(id)=>(dispatch,getState)=>{
-
     dispatch({
         type:REMOVE_ITEM,
         payload:id
@@ -22,7 +22,6 @@ export const removeItem =(id)=>(dispatch,getState)=>{
 };
 
 export const increaseItem =(el)=>(dispatch)=>{
-
     dispatch({
         type:INCREASE_ITEM,
         payload : el
@@ -36,6 +35,12 @@ export const decreaseItem =(el)=>(dispatch)=>{
     })
 };
 
+export const total =(tot)=>(dispatch)=>{
+    dispatch({
+        type:TOTAL,
+        payload:tot
+    })
+}
 
 
 

@@ -17,7 +17,7 @@ function App() {
     
     <Route exact path="/" component={()=> <Carousel/>} />
     <NavBar/>
-    <Route exact path="/" component={(props)=> <Home {...props}/> } />
+    <Route exact path="/" component={()=> <Home /> } />
     <Route exact path='/inscription' component={(props)=> < Register {...props} />}/>
     <Route exact path="/login" component={ (props)=>< Login {...props}/> }/>
     <Route exact path='/profile' component={ (props)=><Profile {...props}/> }/>

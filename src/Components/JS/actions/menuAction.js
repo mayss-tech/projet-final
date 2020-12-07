@@ -5,7 +5,9 @@ import {
     FETCH_MENU_FAILURE,
     ADD_MENU_BEGIN,
     ADD_NEW_MENU,
-    ADD_MENU_FAILURE
+    ADD_MENU_FAILURE,
+    REMOVE_ADMIN_ITEM,
+    SEARCH_MENU
     } from '../constants/action-types';
 
 export const fetchMenuAsync = (id) => async (dispatch) => {
@@ -13,10 +15,10 @@ export const fetchMenuAsync = (id) => async (dispatch) => {
         type: FETCH_MENU_BEGIN,
     });
     try {
-        const menus = await axios.post('/dataRestaurant/restaurantDetails',{id});
+        const menuDetails = await axios.post('/dataRestaurant/restaurantDetails',{id:id});
         dispatch({
             type:FETCH_MENU_SUCCESS ,
-            payload: menus.data,
+            payload: menuDetails.data,
         })
     }catch (error){
         dispatch({
@@ -24,6 +26,13 @@ export const fetchMenuAsync = (id) => async (dispatch) => {
             payload: error.response,
         });
 }};
+
+export const searchMenu = (text)=>(dispatch)=>{
+    dispatch({
+        type:SEARCH_MENU,
+        payload:text
+    })
+}
 
 export const addNewMenu =(newMenu)=> async (dispatch,getState)=>{
     dispatch({
@@ -43,3 +52,11 @@ export const addNewMenu =(newMenu)=> async (dispatch,getState)=>{
     }
     localStorage.setItem("menus",JSON.stringify(getState().menuReducer.menus))
 }
+
+export const removeMenu =(id)=>(dispatch,getState)=>{
+    dispatch({
+        type:REMOVE_ADMIN_ITEM,
+        payload:id
+    })
+    localStorage.setItem("cart", JSON.stringify(getState().menuReducer.menus))
+};

@@ -1,12 +1,14 @@
 import {ADD_ITEM,
         REMOVE_ITEM,
         INCREASE_ITEM,
-        DECREASE_ITEM
+        DECREASE_ITEM,
+        TOTAL
         } from "../constants/action-types";
 
 const initialState={
     cartItems:[],
-    qtn:0
+    qtn:0,
+    tot:0
 }
 const cartReducer =(state=initialState ,{ type,payload})=>{
     switch(type){
@@ -24,7 +26,7 @@ const cartReducer =(state=initialState ,{ type,payload})=>{
                 cartItems:[...state.cartItems,item]   
                 }
             }
-
+        break;
         case REMOVE_ITEM:
             return{
                 ...state,
@@ -42,6 +44,11 @@ const cartReducer =(state=initialState ,{ type,payload})=>{
                 cartItems : state.cartItems.map(el=>el._id===payload._id
                 ? {...el,qtn: el.qtn-1} : el)
         }
+        case TOTAL:
+            return{
+                ...state,
+                cartItems : Number(state.cartItems.reduce((a, b) => a + b.price * b.qtn, 0))
+            }
         default:
             return state
 }};

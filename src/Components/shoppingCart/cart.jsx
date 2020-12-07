@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   removeItem,
   increaseItem,
-  decreaseItem
+  decreaseItem,
+  total
 } from "../JS/actions/shopping-cartAction";
 
 const Cart = (props) => {
@@ -29,7 +30,7 @@ const Cart = (props) => {
       {cartItems.map((el) => (
         <div className="cart" key={el._id}>
           <div className="cart_detail">
-            <img className="img_cart" src={el.img} alt="image" />
+            <img className="img_cart" src={el.img} alt="cart" />
             <div className="title_cart">
               <h5>{el.menuName}</h5>
               <h5>{el.price} dt </h5>
@@ -61,6 +62,7 @@ const Cart = (props) => {
           <h5>
             {" "}
             {Number(cartItems.reduce((a, b) => a + b.price * b.qtn, 0))} dt
+          
           </h5>
           <h5>Frais de livraison : 5 dt</h5>
           <h5>

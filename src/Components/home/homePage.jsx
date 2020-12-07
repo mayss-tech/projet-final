@@ -1,8 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import img4 from '../images/4.webp';
 import {BrowserRouter as Router} from 'react-router-dom';
-const Home = (props) => {
+const Home = () => {
 
     return(<Router><div>
     <div className="part_1">
@@ -28,11 +27,6 @@ const Home = (props) => {
                 Espèce, ticket resto, chèque
                 </p>
     </div> 
-    </div>
-    <div className="part_2"  >
-        <img className="home_img" src={img4} alt="img4"></img>
-        <h3> Vous êtes restaurateur ?</h3>
-        <button className="btn3" onClick={()=>props.history.push('/partenaire')}><b>Rejoignez-nous</b></button>
     </div>
     </div></Router>);
 }

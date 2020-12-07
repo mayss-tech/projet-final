@@ -9,15 +9,19 @@ const Rate = (props) => {
     // }, [rating]);
 
     return ( <div className={starRate}>
-{[...Array(5)].map((x,y)=>{ const ratingValue=y+1; 
+{[...Array(5)].map((x,y)=>{ const ratingValue=y+1;
+          
             return <label key={Math.random()}>
             <input 
             type="radio"
             name="rating" 
             value={ratingValue} 
             className="rate" 
-            onClick={()=>console.log ((setRating(ratingValue)))}/>
-            < FaStar className="fa-star" color={ratingValue <= rating?"#C29638":"#747474"}/>
+          onClick={()=>  setRating(console.log('rate',ratingValue))
+               }
+             />
+            < FaStar className="fa-star" color={ratingValue<= rating?"#C29638":"#747474"  }/>
+
         </label> } 
             ) } 
     </div> );

@@ -4,13 +4,15 @@ import {
     FETCH_RESTAURANT_FAILURE,
     ADD_RESTAURANT_BEGIN,
     ADD_NEW_RESTAURANT, 
-    ADD_RESTAURANT_FAILURE
+    ADD_RESTAURANT_FAILURE,
+    SEARCH_RESTAURANT
     } from '../constants/action-types';
 
 const initialState = {
     restaurants:[],
     loading: false,
-    error: null
+    error: null,
+    text:""
 };
 const restoReducer = (state = initialState, { type, payload }) => {
     switch (type) {
@@ -31,6 +33,11 @@ const restoReducer = (state = initialState, { type, payload }) => {
             loading:false,
             error:payload
         };
+    case SEARCH_RESTAURANT:
+        return{
+            ...state,
+            text:payload
+        }
         case ADD_RESTAURANT_BEGIN:
         return {
             ...state,

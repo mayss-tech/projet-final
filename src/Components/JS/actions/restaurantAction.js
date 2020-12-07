@@ -5,7 +5,8 @@ import {
     FETCH_RESTAURANT_FAILURE,
     ADD_RESTAURANT_BEGIN,
     ADD_NEW_RESTAURANT,
-    ADD_RESTAURANT_FAILURE
+    ADD_RESTAURANT_FAILURE,
+    SEARCH_RESTAURANT
     } from '../constants/action-types';
 
 export const fetchRestaurantBeginAsync = () => async (dispatch) => {
@@ -23,6 +24,13 @@ export const fetchRestaurantBeginAsync = () => async (dispatch) => {
             type: FETCH_RESTAURANT_FAILURE,
         });
 }};
+
+export const searchRestaurant = (text)=>(dispatch)=>{
+    dispatch({
+        type:SEARCH_RESTAURANT,
+        payload:text
+    })
+}
 export const addNewRestaurant=(newResto)=>async (dispatch,getState)=>{
     dispatch({
         type: ADD_RESTAURANT_BEGIN,

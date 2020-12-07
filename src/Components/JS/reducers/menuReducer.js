@@ -4,14 +4,17 @@ import {
     FETCH_MENU_FAILURE,
     ADD_MENU_BEGIN,
     ADD_NEW_MENU,
-    ADD_MENU_FAILURE
+    ADD_MENU_FAILURE,
+    REMOVE_ADMIN_ITEM,
+    SEARCH_MENU
     } from '../constants/action-types';
 
 const initialState = {
-    menus: [],
+    menus:[],
     loading: false,
     error: null,
-    
+    menuDetails :null,
+    text:''
 };
 const menuReducer = (state = initialState, { type, payload }) => {
     switch (type) {
@@ -23,7 +26,7 @@ const menuReducer = (state = initialState, { type, payload }) => {
     case FETCH_MENU_SUCCESS:
         return {
             ...state,
-            menus:payload,
+            menuDetails :payload,
             loading:false,
         };
     case FETCH_MENU_FAILURE:
@@ -32,6 +35,11 @@ const menuReducer = (state = initialState, { type, payload }) => {
             loading:false,
             error:payload
         };
+    case SEARCH_MENU:
+        return{
+            ...state,
+            text:payload
+        }
     case ADD_MENU_BEGIN:
         return {
             ...state,
@@ -40,13 +48,18 @@ const menuReducer = (state = initialState, { type, payload }) => {
     case ADD_NEW_MENU:
             return{
                 ...state,
-            menus:[...state.menus,payload]   
+                menus:[...state.menus,payload]   
             }
     case ADD_MENU_FAILURE:
         return {
             ...state,
             loading:false,
             error:payload
+        }
+    case REMOVE_ADMIN_ITEM:
+        return{
+            ...state,
+            menus: state.menus.filter(el=>el.id !== payload)
         }
     default:
         return state;
