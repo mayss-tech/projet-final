@@ -5,5 +5,5 @@ const mongoUri=config.get('mongoURI');
 
 
 module.exports = () => 
-mongoose.connect( mongoUri, {useUnifiedTopology: true, useNewUrlParser : true} ,
+mongoose.connect( mongoUri, {useUnifiedTopology: true, useNewUrlParser : true, useFindAndModify: false } ,
 err=>err?console.error(err):console.log('db is connected....'));

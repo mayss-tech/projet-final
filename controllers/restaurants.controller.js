@@ -3,11 +3,11 @@ const User = require('../Model/User');
 const Menu = require ('../model/menu.js');
 
 exports.restaurantList = async (req, res) => {
-    const {idUser,image,name,rate,menu}=req.body
+    const {idUser,image,name,desc,rate,menu}=req.body
     
     try {
         const newRestaurant = await new Restaurant({
-            image,name,rate,menu
+            image,name,desc,rate,menu
         })
         newRestaurant.save();
 
@@ -25,7 +25,7 @@ exports.restaurantList = async (req, res) => {
 exports.restaurantFind = async (req,res)=>{
     try {
         const restaurant = await Restaurant.find()
-        res.status(201).json(restaurant)
+        res.status(200).json(restaurant)
     } catch (error) {
         console.error(error)
     res.status(500).json({errors:error})
@@ -37,39 +37,34 @@ exports.restaurantDetails = async (req,res) => {
     try {
         const restaurant = await Restaurant.findById(id);
         const menuDetails =await Menu.find({_id: restaurant.menu})
-    
-    // const payload ={
-    //     image: restaurant.image,
-    //     name: restaurant.name,
-    //     desc: restaurant.desc,
-    //     rate: restaurant.rate,
-    //     details:menuDetails,
-    // }
     res.status(200).json(menuDetails);
     } catch (error) {
     console.error(error)
-    res.status(500).json({errors:error})
+    res.json({errors:error})
     }};
 
-// exports.collectionFind = async (req, res) =>{
-//     try {
-//     const restaurant = await Restaurant.findOne({ _id: req.params.id}).populate("menus");
-//     res.status(201).json(restaurant);
-//     } catch (error) {
-//     console.error(error)
-//     res.status(500).json({errors:error})
-//     }}
+    exports.rating= async(req,res)=>{
+        const {id,ratingValue}=req.body
+        console.log(id)
+        try {
+            const restaurant = await Restaurant.findById(id)
+            restaurant.rate.push(ratingValue)
+            if (restaurant.rate.length ===0 ) return res.json({nameResto:restaurant.name,
+                avgRate: 0});
+            const sum = restaurant.rate.reduce((a,b)=>a+b)
+            const avg = (sum/restaurant.rate.length)
+            await Restaurant.findByIdAndUpdate(id,{
+            rate:restaurant.rate} )
+            const payload={
+                nameResto:restaurant.name,
+                avgRate: avg
+            }
+            res.json(payload)
+    } catch (error) {
+        console.error(error)
+        res.json({errors:error})
+    }
+    }
 
-// exports.rating = async (req,res)=>{
-//     const {IdUser,Value}=req.body
-//     try {
-//         const rate = await Restaurant.findOneAndUpdate({
-//             $push:({IdUser,Value})
-//         })
-//         res.status(201).json(rate)
-//     } catch (error) {
-//         console.error(error)
-//         res.status(500).json({errors:error})
-//     }
-// }
+
 

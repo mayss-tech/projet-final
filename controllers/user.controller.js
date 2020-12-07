@@ -52,8 +52,6 @@ exports.login = async(req,res)=>{
         res.status(500).json({errors:error})
     }
 };
-
 exports.profile = async (req, res) => {
-    console.log('req', req);
-    res.json(req.user);
-};
+        res.json(req.user)
+    };

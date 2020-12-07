@@ -12,9 +12,9 @@ exports.menuList = async (req, res) =>{
     console.log(newMenu)
     const fuser = await User.findById(idUser)
     
-    const restaurant = await Restaurant.findById(fuser.idRestaurant[0]);
+    const restaurant = await Restaurant.findById(fuser.idRestaurant);
     restaurant.menu.push(newMenu._id)
-    await Restaurant.findByIdAndUpdate(fuser.idRestaurant[0],{
+    await Restaurant.findByIdAndUpdate(fuser.idRestaurant,{
         menu: restaurant.menu
     })
     res.status(201).json(restaurant)
