@@ -9,7 +9,8 @@ import {
     SEARCH_MENU
     } from '../constants/action-types';
 
-export const fetchMenuAsync = (id) => async (dispatch) => {
+export const fetchMenuAsync = (id) => async (dispatch,getState) => {
+    console.log('text',id)
     dispatch({
         type: FETCH_MENU_BEGIN,
     });
@@ -24,6 +25,7 @@ export const fetchMenuAsync = (id) => async (dispatch) => {
             type: FETCH_MENU_FAILURE,
             payload: error.response,
         });
+        localStorage.setItem("menus",JSON.stringify(getState().menuReducer.menuDetails))
 }};
 
 export const searchMenu = (text)=>(dispatch)=>{
@@ -49,5 +51,4 @@ export const addNewMenu =(newMenu)=> async (dispatch,getState)=>{
             payload: error.response,
         })
     }
-    localStorage.setItem("menus",JSON.stringify(getState().menuReducer.menus))
 }

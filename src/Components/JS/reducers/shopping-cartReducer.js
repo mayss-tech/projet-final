@@ -1,3 +1,4 @@
+
 import {ADD_ITEM,
         REMOVE_ITEM,
         INCREASE_ITEM,
@@ -6,9 +7,8 @@ import {ADD_ITEM,
         } from "../constants/action-types";
 
 const initialState={
-    cartItems:[],
+    cartItems:JSON.parse(localStorage.getItem('cart'|| '[]')),
     qtn:0,
-    tot:0
 }
 const cartReducer =(state=initialState ,{ type,payload})=>{
     switch(type){
@@ -39,7 +39,7 @@ const cartReducer =(state=initialState ,{ type,payload})=>{
                     ? {...el,qtn: el.qtn+1} : el)
             }
         case DECREASE_ITEM:
-            return{
+            return {
                 ...state,
                 cartItems : state.cartItems.map(el=>el._id===payload._id
                 ? {...el,qtn: el.qtn-1} : el)
@@ -47,7 +47,7 @@ const cartReducer =(state=initialState ,{ type,payload})=>{
         case TOTAL:
             return{
                 ...state,
-                cartItems : Number(state.cartItems.reduce((a, b) => a + b.price * b.qtn, 0))
+                tot:payload
             }
         default:
             return state

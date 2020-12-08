@@ -16,7 +16,7 @@ const initialState = {
     loading: false,
     error: null,
     text:"",
-    rate:null
+    rate : null
 };
 const restoReducer = (state = initialState, { type, payload }) => {
     switch (type) {

@@ -5,11 +5,7 @@ import combineReducers from '../reducers';
 const middleware = [thunk];
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const initialState = {
-        // restaurants:JSON.parse(localStorage.getItem("restaurants" || "[]")),
-        // cartItems:JSON.parse(localStorage.getItem("cartItems" || "[]")),
-        // menus: JSON.parse(localStorage.getItem("menus" || "[]"))
-    }
+const initialState = {}
     
 const store = createStore(
     combineReducers,

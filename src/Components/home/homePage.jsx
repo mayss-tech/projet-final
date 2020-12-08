@@ -1,7 +1,13 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import {BrowserRouter as Router} from 'react-router-dom';
+
 const Home = () => {
+    // const rate = useSelector((state) => state.restoReducer.rate);
+    // useEffect(() => {
+        
+    //     while (rate===null){}
+    // }, []);
 
     return(<Router><div>
     <div className="part_1">
@@ -27,7 +33,14 @@ const Home = () => {
                 Espèce, ticket resto, chèque
                 </p>
     </div> 
+    {/* <div>
+        {  (rate.map(el=><div>
+  <p>{el.name}</p>
+<p> {el.ratingValue}</p>
+</div>)) }  
+    </div> */}
     </div>
+  
     </div></Router>);
 }
 export default withRouter (Home);

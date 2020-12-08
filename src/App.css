@@ -284,8 +284,9 @@ display:flex;
 flex-wrap:wrap;
 }
 .menu{
-  width:20vw;
-  height: 55vh;
+  display : grid;
+  grid-template-columns: 60 vh;
+  grid-template-rows:25 vw;
   margin-left: 4vw;
   border: solid rgb(163, 129, 16)1px;
   margin-bottom:5vh;
@@ -294,7 +295,7 @@ flex-wrap:wrap;
   -moz-border-radius: 0.5vw;
   -ms-border-radius: 0.5vw;
   -o-border-radius: 0.5vw;
-}
+} 
 .menu_p{
   cursor: pointer;
   text-align: center;
@@ -312,7 +313,7 @@ flex-wrap:wrap;
   padding-left: 0.5vw;
   padding-right: 0.5vw;
 }
-.imgmenu{
+.imgMenu{
   cursor: pointer;
   width:20vw;
   height: 25vh;

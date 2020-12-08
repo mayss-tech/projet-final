@@ -1,15 +1,29 @@
-import React from "react";
+import React, { useEffect,useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   removeItem,
   increaseItem,
   decreaseItem,
-  total
+  totalCart
 } from "../JS/actions/shopping-cartAction";
-
 const Cart = (props) => {
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
   const dispatch = useDispatch();
+  const [total, setTotal] = useState();
+
+  const subTot = () => {
+    if (cartItems.reduce((a, b) => a + b.price * b.qtn, 0) === 0) {
+      setTotal(0);
+    } else
+      setTotal(
+        cartItems.reduce((a, b) => a + b.price * b.qtn, 0) <50
+          ? cartItems.reduce((a, b) => a + b.price * b.qtn, 0)+5
+          : cartItems.reduce((a, b) => a + b.price * b.qtn, 0) 
+      );
+  };
+  useEffect(() => {
+    subTot()
+  }, [cartItems]);
 
   return (
     <div style={{ marginTop: "20%" }}>
@@ -43,7 +57,11 @@ const Cart = (props) => {
               <h4>{el.qtn} </h4>
               <i
                 className="fas fa-minus"
-                onClick={() => dispatch(decreaseItem(el))}
+                onClick={() => {
+                  el.qtn === 1
+                    ? dispatch(removeItem(el._id))
+                    : dispatch(decreaseItem(el));
+                }}
               ></i>
             </div>
             <button
@@ -58,20 +76,20 @@ const Cart = (props) => {
       ))}
       <div className="total_cart">
         <h4>Total</h4>
-        <div className="tot">
+        <div>
           <h5>
             {" "}
             {Number(cartItems.reduce((a, b) => a + b.price * b.qtn, 0))} dt
-          
           </h5>
           <h5>Frais de livraison : 5 dt</h5>
           <h5>
             Prix à payer :{" "}
-            {Number(cartItems.reduce((a, b) => a + b.price * b.qtn + 5, 0))} dt
+            {total} dt
           </h5>
           <button
             className="btn2_cart"
-            onClick={() => props.history.push("/order")}
+            onClick={() => {props.history.push("/order");
+              dispatch(totalCart(total))}}
           >
             <b>Commander</b>
           </button>

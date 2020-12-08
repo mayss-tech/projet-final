@@ -3,8 +3,9 @@ import Modal from "react-modal";
 const PopUp = ({ isOpen, closeModal, resto }) => {
   return (
     <div>
-      <Modal isOpen={true} onRequestClose={closeModal}>
-        <div style={{ display: "flex" }}>
+      <Modal isOpen={isOpen} onRequestClose={closeModal}>
+        <div style={{ display: "flex" }} key={resto.id}>
+          
           <img
             src={resto.img}
             style={{

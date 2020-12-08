@@ -9,7 +9,7 @@ import {
     } from '../constants/action-types';
 
 const initialState = {
-    menus:[],
+    menus:[], 
     loading: false,
     error: null,
     menuDetails :null,
@@ -20,7 +20,8 @@ const menuReducer = (state = initialState, { type, payload }) => {
     case FETCH_MENU_BEGIN:
         return {
             ...state,
-            loading:true
+            loading:true,
+        
         };
     case FETCH_MENU_SUCCESS:
         return {

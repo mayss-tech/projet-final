@@ -21,25 +21,29 @@ export const removeItem =(id)=>(dispatch,getState)=>{
     localStorage.setItem("cart", JSON.stringify(getState().cartReducer.cartItems))
 };
 
-export const increaseItem =(el)=>(dispatch)=>{
+export const increaseItem =(el)=>(dispatch,getState)=>{
     dispatch({
         type:INCREASE_ITEM,
         payload : el
     })
+    localStorage.setItem("cart", JSON.stringify(getState().cartReducer.cartItems))
 };
 
-export const decreaseItem =(el)=>(dispatch)=>{
+export const decreaseItem =(el)=>(dispatch,getState)=>{
     dispatch({
         type: DECREASE_ITEM,
         payload : el
     })
+    localStorage.setItem("cart", JSON.stringify(getState().cartReducer.cartItems))
 };
 
-export const total =(tot)=>(dispatch)=>{
+export const totalCart =(tot)=>(dispatch,getState)=>{
     dispatch({
         type:TOTAL,
         payload:tot
     })
+
+    localStorage.setItem("cart", JSON.stringify(getState().cartReducer.cartItems))
 }
 
 

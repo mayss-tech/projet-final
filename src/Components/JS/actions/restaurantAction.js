@@ -12,7 +12,7 @@ import {
     RATE_FAILURE
     } from '../constants/action-types';
 
-export const fetchRestaurantBeginAsync = () => async (dispatch) => {
+export const fetchRestaurantBeginAsync = () => async (dispatch,getState) => {
     dispatch({
         type: FETCH_RESTAURANT_BEGIN,
     });
@@ -26,6 +26,7 @@ export const fetchRestaurantBeginAsync = () => async (dispatch) => {
         dispatch({
             type: FETCH_RESTAURANT_FAILURE,
         });
+        localStorage.setItem("restaurants", JSON.stringify(getState().restoReducer.restaurants))
 }};
 
 export const searchRestaurant = (text)=>(dispatch)=>{
@@ -52,7 +53,7 @@ export const addNewRestaurant=(newResto)=>async (dispatch,getState)=>{
     localStorage.setItem("restaurants",JSON.stringify(getState().restoReducer.restaurants));
 }
 
-export const ratingResto=(id,ratingValue)=> async (dispatch)=>{
+export const ratingResto=(id,ratingValue)=> async (dispatch,getState)=>{
     dispatch({
         type :RATE_BEGIN,
     })
