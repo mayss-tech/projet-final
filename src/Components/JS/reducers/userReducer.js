@@ -14,7 +14,8 @@ import {
 const initialState = {
     loading: false,
     user: null ,
-    errors: []
+    isAuth:null,
+    errors:[]
 };
 
 const userReducer = (state = initialState, { type, payload }) => {

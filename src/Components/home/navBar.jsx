@@ -20,16 +20,23 @@ const NavBar = (props) => {
             </p>
           </div>
           <div>
-            {JSON.parse(localStorage.getItem("token") !== null) ? (
+            {JSON.parse(localStorage.getItem("token") === null) ? (
               <p className="headerItem">
-                <Link to="/" onClick={() => dispatch(logout())}>
-                  <i className="fas fa-user-alt"></i> <b>Se déconnecter</b>
+                <Link
+                  style={{ textDecoration: "none", color: "#B48B47" }}
+                  to="/login"
+                >
+                  <i className="fas fa-user-alt"></i> <b> Se connecter </b>
                 </Link>
               </p>
             ) : (
               <p className="headerItem">
-                <Link to="/login">
-                  <i className="fas fa-user-alt"></i> <b> Se connecter </b>
+                <Link
+                  style={{ textDecoration: "none", color: "#B48B47" }}
+                  to="/"
+                  onClick={() => dispatch(logout())}
+                >
+                  <i className="fas fa-user-alt"></i> <b>Se déconnecter</b>
                 </Link>
               </p>
             )}

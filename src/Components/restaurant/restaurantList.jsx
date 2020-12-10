@@ -45,8 +45,7 @@ const RestoList = (props) => {
             <div>
               <button
                 className="btn_resto"
-                onClick={(e) => {
-                  e.preventDefault();
+                onClick={() => {
                   props.history.push("/menuList/" + el._id);
                 }}
               >

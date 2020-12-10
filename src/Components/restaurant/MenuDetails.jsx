@@ -18,11 +18,12 @@ const MenuDetails = () => {
   };
   return (
   <div className="part_menu">
-      {menuDetails
+      {menuDetails.menuDetails
         .filter((el) => el.menuName.toLowerCase().includes(text))
         .map((el) => (
           <MenuCard
-            id={el.id}
+            nameResto={menuDetails.name}
+            id={el._id}
             menuName={el.menuName}
             price={el.price}
             img={el.img}

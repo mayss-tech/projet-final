@@ -1,5 +1,8 @@
 import React, {useEffect} from "react";
-import { fetchMenuAsync, searchMenu } from "../JS/actions/menuAction";
+import { fetchMenuAsync, searchMenu} from "../JS/actions/menuAction";
+import {
+  fetchRestaurantBeginAsync,
+} from "../JS/actions/restaurantAction";
 import { useDispatch, useSelector } from "react-redux";
 import MenuDetails from "./MenuDetails";
 const MenuList = (props) => {
@@ -13,7 +16,9 @@ const MenuList = (props) => {
   useEffect(() => {
       dispatch(fetchMenuAsync(props.match.params.id));
   },[]);
-
+  useEffect(() => {
+    dispatch(fetchRestaurantBeginAsync(props.match.params.id))
+  }, []);
   return (menuDetails===null || loading) ? (
     <img
       src="https://www.mid-day.com/Resources/midday/images/loader.gif"

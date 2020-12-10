@@ -6,6 +6,7 @@ import {
   decreaseItem,
   totalCart
 } from "../JS/actions/shopping-cartAction";
+import { getProfile } from "../JS/actions/userAction";
 const Cart = (props) => {
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
   const dispatch = useDispatch();
@@ -20,7 +21,9 @@ const Cart = (props) => {
   useEffect(() => {
     subTot()
   }, [cartItems]);
-
+  useEffect(() => {
+    dispatch(getProfile())
+  }, []);
   return (
     <div className="cart">
       <div className="shopping-cart cart_header">
@@ -39,7 +42,7 @@ const Cart = (props) => {
       </div>
       <div className="cart_details">
       {cartItems.map((el) => (
-        <div className="cart_details_part1" key={el._id}>
+        <div className="cart_details_part1" key={el.id}>
             <div className="cart_detail">
             <img className="img_cart" src={el.img} alt="cart" />
             <div className="cart_details_p">
@@ -56,7 +59,7 @@ const Cart = (props) => {
                 className="fas fa-minus"
                 onClick={() => {
                   el.qtn === 1
-                    ? dispatch(removeItem(el._id))
+                    ? dispatch(removeItem(el.id))
                     : dispatch(decreaseItem(el));
                 }}
               ></i>
@@ -64,7 +67,7 @@ const Cart = (props) => {
             <button
               className="btn_cart"
               onClick={() =>
-                dispatch(removeItem(el._id))}
+                dispatch(removeItem(el.id))}
             >
               <i className="fas fa-trash-alt"></i>
             </button>
@@ -87,7 +90,7 @@ const Cart = (props) => {
           <button
             className="btn2_cart"
             onClick={() => {props.history.push("/order");
-              dispatch(totalCart(total))}}
+              dispatch(totalCart(total),getProfile())}}
           >
             <b>Commander</b>
           </button>
