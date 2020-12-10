@@ -2,11 +2,11 @@ const Menu = require ('../model/menu.js');
 const Restaurant = require ('../model/restaurant.js');
 const User = require('../Model/User.js');
 exports.menuList = async (req, res) =>{
-    const {idUser,img,menuName,price,qtn}=req.body
+    const {idUser,img,menuName, menuDesc,price,qtn}=req.body
     try {
         
     const newMenu = await new Menu({
-        img,menuName,price,qtn
+        img,menuName,menuDesc, price,qtn
     })
     newMenu.save();
     console.log(newMenu)

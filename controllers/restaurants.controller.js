@@ -33,10 +33,10 @@ exports.restaurantFind = async (req,res)=>{
 }
 exports.restaurantDetails = async (req,res) => {
     const {id}=req.body 
-    console.log(id)
     try {
         const restaurant = await Restaurant.findById(id);
         const menuDetails =await Menu.find({_id: restaurant.menu})
+        
     res.status(200).json(menuDetails);
     } catch (error) {
     console.error(error)
@@ -45,21 +45,22 @@ exports.restaurantDetails = async (req,res) => {
 
     exports.rating= async(req,res)=>{
         const {id,ratingValue}=req.body
-        console.log(id)
+       
         try {
             const restaurant = await Restaurant.findById(id)
             restaurant.rate.push(ratingValue)
-            if (restaurant.rate.length ===0 ) return res.json({nameResto:restaurant.name,
-                avgRate: 0});
-            const sum = restaurant.rate.reduce((a,b)=>a+b)
-            const avg = (sum/restaurant.rate.length)
+            // if (restaurant.rate.length ===0 ) return res.json({nameResto:restaurant.name,
+            //     avgRate: 0});
+            // const sum = restaurant.rate.reduce((a,b)=>a+b)
+            // const avg = (sum/restaurant.rate.length)
             await Restaurant.findByIdAndUpdate(id,{
             rate:restaurant.rate} )
             const payload={
                 nameResto:restaurant.name,
-                avgRate: avg
+                // avgRate: avg
             }
             res.json(payload)
+            console.log(payload)
     } catch (error) {
         console.error(error)
         res.json({errors:error})
