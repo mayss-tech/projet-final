@@ -36,8 +36,11 @@ exports.restaurantDetails = async (req,res) => {
     try {
         const restaurant = await Restaurant.findById(id);
         const menuDetails =await Menu.find({_id: restaurant.menu})
-        
-    res.status(200).json(menuDetails);
+        const payload={
+            name:restaurant.name,
+            menuDetails:menuDetails
+        }
+    res.status(200).json(payload);
     } catch (error) {
     console.error(error)
     res.json({errors:error})

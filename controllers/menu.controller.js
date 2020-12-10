@@ -4,7 +4,6 @@ const User = require('../Model/User.js');
 exports.menuList = async (req, res) =>{
     const {idUser,img,menuName, menuDesc,price,qtn}=req.body
     try {
-        
     const newMenu = await new Menu({
         img,menuName,menuDesc, price,qtn
     })
