@@ -1,12 +1,10 @@
 import React, { useEffect } from "react";
 import {
   fetchRestaurantBeginAsync,
-  ratingResto,
   searchRestaurant,
 } from "../JS/actions/restaurantAction";
 import { useDispatch, useSelector } from "react-redux";
 import { withRouter } from "react-router-dom";
-import Rate from "./rate";
 const RestoList = (props) => {
   const dispatch = useDispatch();
   const restaurants = useSelector((state) => state.restoReducer.restaurants);
@@ -44,14 +42,11 @@ const RestoList = (props) => {
               <h4>{el.name}</h4>
               <p>{el.desc}</p>
             </div>
-            <Rate
-              idReso={el.id}
-              rating={el.rate.reduce((a, b) => a + b,0) / el.rate.length}
-            />
             <div>
               <button
                 className="btn_resto"
-                onClick={(e) => {e.preventDefault();
+                onClick={(e) => {
+                  e.preventDefault();
                   props.history.push("/menuList/" + el._id);
                 }}
               >

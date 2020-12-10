@@ -39,12 +39,12 @@ const ProfileAdmin = () => {
     }
   return (
     <div className="dashboard_pat1">
-      <div className="dashboard_pat3">
+      <div>
         <fieldset>
           <legend>Ajouter votre restaurant </legend>
           <input
             type="text"
-            placeholder="Url du restaurant"
+            placeholder="photo restaurant"
             onChange={(e) => {
             setImage(e.target.value);
             }}
@@ -76,11 +76,13 @@ const ProfileAdmin = () => {
             +
           </button>
         </fieldset>
+        </div>
+        <div>
         <fieldset>
           <legend>Ajouter votre menu</legend>
           <input
             type="text"
-            placeholder="Url du menu"
+            placeholder="photo menu"
             onChange={(e) => {
               setImg(e.target.value);
             }}
@@ -118,8 +120,8 @@ const ProfileAdmin = () => {
             +
           </button >
         </fieldset>
+        </div>
       </div>
-    </div>
   );
 };
 export default ProfileAdmin;

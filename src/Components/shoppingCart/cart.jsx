@@ -12,21 +12,17 @@ const Cart = (props) => {
   const [total, setTotal] = useState();
 
   const subTot = () => {
-    if (cartItems.reduce((a, b) => a + b.price * b.qtn, 0) === 0) {
+    if (Number(cartItems.reduce((a, b) => a + b.price * b.qtn, 0)) === 0) {
       setTotal(0);
     } else
-      setTotal(
-        cartItems.reduce((a, b) => a + b.price * b.qtn, 0) <50
-          ? cartItems.reduce((a, b) => a + b.price * b.qtn, 0)+5
-          : cartItems.reduce((a, b) => a + b.price * b.qtn, 0) 
-      );
+      setTotal(Number( cartItems.reduce((a, b) => a + b.price * b.qtn, 0))+5);
   };
   useEffect(() => {
     subTot()
   }, [cartItems]);
 
   return (
-    <div style={{ marginTop: "20%" }}>
+    <div className="cart">
       <div className="shopping-cart cart_header">
         {cartItems.length === 0 ? (
           <div className="cart_p">
@@ -41,11 +37,12 @@ const Cart = (props) => {
           </div>
         )}
       </div>
+      <div className="cart_details">
       {cartItems.map((el) => (
-        <div className="cart" key={el._id}>
-          <div className="cart_detail">
+        <div className="cart_details_part1" key={el._id}>
+            <div className="cart_detail">
             <img className="img_cart" src={el.img} alt="cart" />
-            <div className="title_cart">
+            <div className="cart_details_p">
               <h5>{el.menuName}</h5>
               <h5>{el.price} dt </h5>
             </div>
@@ -65,8 +62,9 @@ const Cart = (props) => {
               ></i>
             </div>
             <button
-              className="btn1_cart"
-              onClick={() => dispatch(removeItem(el._id))}
+              className="btn_cart"
+              onClick={() =>
+                dispatch(removeItem(el._id))}
             >
               <i className="fas fa-trash-alt"></i>
             </button>
@@ -74,8 +72,8 @@ const Cart = (props) => {
           <hr />
         </div>
       ))}
-      <div className="total_cart">
-        <h4>Total</h4>
+      <div className="cart_details_part2">
+        <div className="cart_details_part2_title"><h4>Total</h4></div>
         <div>
           <h5>
             {" "}
@@ -94,6 +92,7 @@ const Cart = (props) => {
             <b>Commander</b>
           </button>
         </div>
+      </div>
       </div>
     </div>
   );

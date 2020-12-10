@@ -47,7 +47,7 @@ export const login = (cred) => async (dispatch) => {
     });
     }
 };
-export const getProfile = (name) => async (dispatch) => {
+export const getProfile = () => async (dispatch) => {
     const token = localStorage.getItem('token');
     const config = {
     headers: {
@@ -58,7 +58,7 @@ export const getProfile = (name) => async (dispatch) => {
     type: GET_PROFILE,
     });
     try {
-    const isAuth = await axios.get('/user/current', config, {name});
+    const isAuth = await axios.get('/user/current', config);
     dispatch({
         type: GET_PROFILE_SUCCESS,
         payload: isAuth.data,

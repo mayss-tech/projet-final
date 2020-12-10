@@ -17,7 +17,7 @@ const MenuDetails = () => {
     setPopUp();
   };
   return (
-    <div className="part_menu">
+  <div className="part_menu">
       {menuDetails
         .filter((el) => el.menuName.toLowerCase().includes(text))
         .map((el) => (
@@ -26,6 +26,8 @@ const MenuDetails = () => {
             menuName={el.menuName}
             price={el.price}
             img={el.img}
+            qtn={el.qtn}
+            menuDesc= {el.menuDesc}
           />
         ))}
     </div>

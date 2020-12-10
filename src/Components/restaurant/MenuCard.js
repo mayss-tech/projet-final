@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { addItem } from "../JS/actions/shopping-cartAction";
 import PopUp from "./PopUp";
 
-const MenuCard = ({ id, menuName, price, img }) => {
+const MenuCard = ({ id, menuName, price, img,qtn, menuDesc }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
 
@@ -11,30 +11,32 @@ const MenuCard = ({ id, menuName, price, img }) => {
     <div className="menu" key={id}>
       <div>
         <img
-          className="imgMenu"
+          className="menu_img"
           src={img}
           alt="resto"
         />
-        <div className="menu_p">
-          <h3>{menuName}</h3>
-          <h5>{price} dt </h5>
+        <div>
+          <h3 className="menu_p1"  >{menuName}</h3>
+          <h5 className="menu_p2" >{price} dt </h5>
+  
         </div>
       </div>
-      <button 
+      <div className="menu_btn">
+      <button className="menu_btn1"
           onClick={() => setIsOpen(true)}>
             <i className="fas fa-eye"></i>
             </button>
-      <button
-        className="btn_menu"
-        onClick={() => dispatch(addItem({ id, menuName, price,img }))}
+      <button className="menu_btn2"
+        onClick={() => dispatch(addItem( {id, menuName, price,img ,qtn}))}
       >
         <b>Ajouter au panier</b>
         <i className="fas fa-cart-plus"></i>
       </button>
+      </div>
       <PopUp
         isOpen={isOpen}
         closeModal={() => setIsOpen(false)}
-        resto={{ id, menuName, price, img }}
+        resto={{ id, menuName, price, img , menuDesc}}
       />
     </div>
   );

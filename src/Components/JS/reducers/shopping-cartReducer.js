@@ -7,25 +7,25 @@ import {ADD_ITEM,
         } from "../constants/action-types";
 
 const initialState={
-    cartItems:JSON.parse(localStorage.getItem('cart'|| '[]')),
+    cartItems:[],
     qtn:0,
 }
 const cartReducer =(state=initialState ,{ type,payload})=>{
     switch(type){
         case ADD_ITEM : 
-            const item = payload;
-            const isExist = state.cartItems.find(el=>el._id===item._id)
-            if(isExist){
-                return {
-                ...state,
-                cartItems :[...state.cartItems.map(el=>el._id===isExist._id?item:el)]
-                }
-            }if(!isExist){
-                return{
-                ...state,
-                cartItems:[...state.cartItems,item]   
-                }
+        const item = payload;
+        const isExist = state.cartItems.find(el=>el._id===item._id)
+        if(isExist){
+            return {
+            ...state,
+            cartItems :[...state.cartItems.map(el=>el._id===isExist._id?item:el)]
             }
+        }if(!isExist){
+            return{
+            ...state,
+            cartItems:[...state.cartItems,item]   
+            }
+        }
         break;
         case REMOVE_ITEM:
             return{

@@ -9,6 +9,7 @@ const MenuList = (props) => {
   const cartItems= useSelector((state) => state.cartReducer.cartItems); 
   const dispatch = useDispatch();
 
+
   useEffect(() => {
       dispatch(fetchMenuAsync(props.match.params.id));
   },[]);
@@ -22,22 +23,22 @@ const MenuList = (props) => {
   ) : 
   error ? (
     <h1 style={{ marginTop: "15%", marginLeft: "40%" }}> 404 Not Found </h1>
-  ) : (<div style={{display:"flex"}}>
-      {<MenuDetails/>}
+  ) : (<div className="menu_part1">
+
       <div className="shopping-cart">
-      <div className="search_menu">
+        <div className="search_menu">
         <input type="text" 
         placeholder="Chercher menu..."
       onChange={(e)=>dispatch(searchMenu(e.target.value)) }/>
-    <div className="i_menu"> <i className="fas fa-search "></i></div> 
-      </div>
-        <h3 onClick={() => props.history.push("/cartItems")}> Panier</h3>
+      <div className="i_menu"> <i className="fas fa-search "></i></div> 
+        </div>
         <div className="tot_cart">
+        <h3 onClick={() => props.history.push("/cartItems")}> Panier</h3>
           <i className="fas fa-shopping-cart "></i>
-          <p className="pannier">{cartItems.length}</p>
+          <p className="pannier" >{cartItems.length}</p>
         </div>
       </div>
-    
+      <MenuDetails/>
       </div>
 );
 };

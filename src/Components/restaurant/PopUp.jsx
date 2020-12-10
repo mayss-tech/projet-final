@@ -4,25 +4,19 @@ const PopUp = ({ isOpen, closeModal, resto }) => {
   return (
     <div>
       <Modal isOpen={isOpen} onRequestClose={closeModal}>
-        <div style={{ display: "flex" }} key={resto.id}>
-          
-          <img
-            src={resto.img}
-            style={{
-              height: "50vh",
-              width: "30vw",
-              marginRight: "2vw",
-              marginTop: "8vh",
-            }}
-            alt="img"
-          />
-          <div style={{ maxWidth: "30vw", marginTop: "18vh" }}>
+        <div className="popUp" key={resto.id}>
+          <img src={resto.img} 
+          className="img_popUp" alt="imgPopUp" />
+          <div className="p_popUp">
             <h3>{resto.menuName}</h3>
-            <h5 style={{ marginBottom: "5vh" }}>{resto.menuDesc}</h5>
+            <h5>{resto.menuDesc}</h5>
             <h4> Prix: {resto.price} dt </h4>
           </div>
-          <div style={{ marginLeft: "28vw", marginTop: "0vh" }}>
-            <button onClick={() => closeModal({ popUp: null })}>
+          <div>
+            <button
+              className="btn_popUp"
+              onClick={() => closeModal({ popUp: null })}
+            >
               <i className="fas fa-times"></i>
             </button>
           </div>
@@ -31,5 +25,4 @@ const PopUp = ({ isOpen, closeModal, resto }) => {
     </div>
   );
 };
-
 export default PopUp;
