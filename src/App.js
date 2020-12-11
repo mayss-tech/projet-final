@@ -25,8 +25,7 @@ function App() {
     <Route exact path='/menuList/:id' component={(props)=>  <MenuList {...props} />}/>
     <Route exact path='/cartItems' component={(props)=>  <Cart {...props} />}/>
     <Route exact path='/order' component={(props)=>  <Order {...props} />}/>
-    <Route exact path='/admin' component={()=>  <ProfileAdmin  />}/>
+    <Route exact path='/dashboardAdmin' component={()=>  <ProfileAdmin  />}/>
     </BrowserRouter> );
 }
-
 export default App;

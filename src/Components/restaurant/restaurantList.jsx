@@ -37,7 +37,7 @@ const RestoList = (props) => {
         .filter((el) => el.name.toLowerCase().includes(text))
         .map((el) => (
           <div className="restoList" key={el.id}>
-            <img className="imgResto" src={el.image} alt="menu" />
+            <img className="imgResto" src={el.image} alt="imgRestaurant" />
             <div className="desc">
               <h4>{el.name}</h4>
               <p>{el.desc}</p>

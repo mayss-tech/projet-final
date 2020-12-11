@@ -9,13 +9,12 @@ import {
     SEARCH_MENU
     } from '../constants/action-types';
 
-export const fetchMenuAsync = (id) => async (dispatch,getState) => {
-    console.log('text',id)
+export const fetchMenuAsync = (id) => async (dispatch) => {
     dispatch({
         type: FETCH_MENU_BEGIN,
     });
     try {
-        const menuDetails = await axios.post('/dataRestaurant/restaurantDetails',{id:id});
+        const menuDetails = await axios.post('/dataRestaurant/restaurantDetails',{id});
         dispatch({
             type:FETCH_MENU_SUCCESS ,
             payload: menuDetails.data,
@@ -25,7 +24,6 @@ export const fetchMenuAsync = (id) => async (dispatch,getState) => {
             type: FETCH_MENU_FAILURE,
             payload: error.response,
         });
-        localStorage.setItem("menus",JSON.stringify(getState().menuReducer.menuDetails))
 }};
 
 export const searchMenu = (text)=>(dispatch)=>{
@@ -35,7 +33,7 @@ export const searchMenu = (text)=>(dispatch)=>{
     })
 }
 
-export const addNewMenu =(newMenu)=> async (dispatch,getState)=>{
+export const addNewMenu =(newMenu)=> async (dispatch)=>{
     dispatch({
         type:ADD_MENU_BEGIN,
     });

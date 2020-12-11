@@ -42,7 +42,6 @@ export const totalCart =(tot)=>(dispatch,getState)=>{
         type:TOTAL,
         payload:tot
     })
-
     localStorage.setItem("cart", JSON.stringify(getState().cartReducer.cartItems))
 }
 

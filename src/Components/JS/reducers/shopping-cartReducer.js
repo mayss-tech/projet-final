@@ -16,11 +16,6 @@ const cartReducer =(state=initialState ,{ type,payload})=>{
         case ADD_ITEM : 
         const item = payload;
         const isExist = state.cartItems.find(el=>el.id===item.id)
-        // if(isExist){
-        //     return {
-        //     ...state,
-        //     cartItems :state.cartItems.map(el=>el._id===isExist._id ? item:el)
-        //     }
         if(!isExist){
             return{
             ...state,
@@ -36,7 +31,6 @@ const cartReducer =(state=initialState ,{ type,payload})=>{
             return {
                 ...state,
                 cartItems : state.cartItems.map(el=>el.id === payload.id
-
                     ? {...el, qtn: el.qtn+1} : el)
             }
         case DECREASE_ITEM:

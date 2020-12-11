@@ -37,7 +37,7 @@ const Profile = () => {
         </p>
       </div>
       <div style={{ marginTop: "25vh" }}>
-      <RestoList />
+      <RestoList/>
       </div>
     </div>
   );

@@ -4,7 +4,8 @@ import {
   removeItem,
   increaseItem,
   decreaseItem,
-  totalCart
+  totalCart,
+  addItem
 } from "../JS/actions/shopping-cartAction";
 import { getProfile } from "../JS/actions/userAction";
 const Cart = (props) => {
@@ -24,6 +25,7 @@ const Cart = (props) => {
   useEffect(() => {
     dispatch(getProfile())
   }, []);
+
   return (
     <div className="cart">
       <div className="shopping-cart cart_header">

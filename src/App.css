@@ -298,24 +298,15 @@ flex-wrap:wrap;
   margin-left:3.5vw;
 }
 .menu_btn2{
-    /* height: 40%;
-  width:80%; */
   background-color: #C29638;
   outline: none;
   border-radius: 0.3vw;
-  /* padding-left: 0.5vw;
-  padding-right: 0.5vw;
-  */
 }
 .menu_btn1{
-
-  /* height: 40%;
- width:20%; */
  background-color: #C29638;
  outline: none;
  border-radius: 0.3vw;
- /* padding-left: 0.5vw;
- padding-right: 0.5vw; */
+
 }
 .menu_img{
   width:100%;

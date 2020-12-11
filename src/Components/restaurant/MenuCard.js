@@ -4,10 +4,8 @@ import { addItem } from "../JS/actions/shopping-cartAction";
 import PopUp from "./PopUp";
 
 const MenuCard = ({ id, menuName, price, img,qtn, menuDesc, nameResto}) => {
-  console.log('id', id)
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
-
   return (
     <div className="menu" key={id}>
       <div>
