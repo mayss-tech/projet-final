@@ -1,11 +1,11 @@
 import React, { useEffect,useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import Bar from "../Bar/Bar";
 import {
   removeItem,
   increaseItem,
   decreaseItem,
   totalCart,
-  addItem
 } from "../JS/actions/shopping-cartAction";
 import { getProfile } from "../JS/actions/userAction";
 const Cart = (props) => {
@@ -42,7 +42,11 @@ const Cart = (props) => {
           </div>
         )}
       </div>
-      <div className="cart_details">
+      < div className="cart_details" style={{display:'block'}} >
+        <div><Bar/></div>
+      
+      <div>
+
       {cartItems.map((el) => (
         <div className="cart_details_part1" key={el.id}>
             <div className="cart_detail">
@@ -76,7 +80,8 @@ const Cart = (props) => {
           </div>
           <hr />
         </div>
-      ))}
+      ))}      </div>
+
       <div className="cart_details_part2">
         <div className="cart_details_part2_title"><h4>Total</h4></div>
         <div>

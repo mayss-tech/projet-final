@@ -2,11 +2,12 @@ import React, {useState} from "react";
 import { useDispatch ,useSelector } from "react-redux";
 import {addNewRestaurant} from "../JS/actions/restaurantAction";
 import {addNewMenu} from '../JS/actions/menuAction';
+import Calendrier from "../DashboardAdmin/Calendrier";
+import CloseDay from "../DashboardAdmin/CloseDay";
 
-const ProfileAdmin = () => {
+const ProfileAdmin = ({firstCloseDay,lastCloseDay,firstDay,lastDay,openHour,closeHour,firstOpenDay,lastOpenDay}) => {
   const [image, setImage] = useState("");
   const [name, setName] = useState("");
-  const [desc, setDesc] = useState("");
   const [rate, setRate] = useState(0);
 
   const [img, setImg] = useState("");
@@ -23,8 +24,13 @@ const ProfileAdmin = () => {
       idUser:user._id,
       image: image,
       name: name,
-      desc: desc,
-      rate: rate
+      rate: rate,
+      firstOpenDay :firstDay,
+      lastOpenDay:  lastDay,
+      openHour : openHour,
+      closeHour :closeHour,
+      firstCloseDay:firstCloseDay,
+      lastCloseDay:lastCloseDay
     }))}
 
     const addMenu=()=>{
@@ -38,10 +44,10 @@ const ProfileAdmin = () => {
       }))
     }
   return (
-    <div className="dashboard_pat1">
-      <div>
-        <fieldset>
-          <legend>Ajouter votre restaurant </legend>
+    <div >
+      <div style={{marginTop:"20%"}}>
+        
+
           <input
             type="text"
             placeholder="photo restaurant"
@@ -57,29 +63,26 @@ const ProfileAdmin = () => {
             }}
           />
           <input
-            type="text"
-            placeholder="Description"
-            onChange={(e) => {
-              setDesc(e.target.value);
-            }}
-          />
-          <input
             type="number"
             placeholder="Rate"
             onChange={(e) => {
               setRate(e.target.value);
             }}
           />
+             <Calendrier firstDay={firstOpenDay} lastDay={lastOpenDay}  openHour={openHour} 
+                  closeHour={closeHour }/> 
+           <CloseDay firstCloseDay={firstCloseDay}
+            lastCloseDay={lastCloseDay }  />
           <button
             onClick={() =>{addResto()}}
           >
             +
           </button>
-        </fieldset>
+        
         </div>
+
         <div>
-        <fieldset>
-          <legend>Ajouter votre menu</legend>
+
           <input
             type="text"
             placeholder="photo menu"
@@ -119,7 +122,7 @@ const ProfileAdmin = () => {
           >
             +
           </button >
-        </fieldset>
+    
         </div>
       </div>
   );

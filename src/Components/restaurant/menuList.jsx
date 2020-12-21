@@ -5,6 +5,8 @@ import {
 } from "../JS/actions/restaurantAction";
 import { useDispatch, useSelector } from "react-redux";
 import MenuDetails from "./MenuDetails";
+import RestoMenu from "./RestoMenu";
+import Bar from "../Bar/Bar";
 const MenuList = (props) => {
   const menuDetails= useSelector((state) => state.menuReducer.menuDetails);
   const loading = useSelector((state) => state.menuReducer.loading);
@@ -42,8 +44,19 @@ const MenuList = (props) => {
           <i className="fas fa-shopping-cart "></i>
           <p className="pannier" >{cartItems.length}</p>
         </div>
+     
       </div>
+      <div style={{marginTop:'15%'}}>
+      <Bar/>
+      </div>
+     
+      <div>
       <MenuDetails/>
+
+      </div>
+      <div>
+        <RestoMenu />
+      </div>
       </div>
 );
 };

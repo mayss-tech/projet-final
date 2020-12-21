@@ -13,13 +13,13 @@ const Carousel = () => {
   setTimeout(() => {
     next();
   }, 10000);
-  const prev = () => {
-    if (Currentvalue == 0) {
-      setCurrentvalue(Photo.length - 1);
-    } else {
-      setCurrentvalue(Currentvalue - 1);
-    }
-  };
+  // const prev = () => {
+  //   if (Currentvalue == 0) {
+  //     setCurrentvalue(Photo.length - 1);
+  //   } else {
+  //     setCurrentvalue(Currentvalue - 1);
+  //   }
+  // };
   const next = () => {
     if (Currentvalue == Photo.length - 1) {
       setCurrentvalue(0);
@@ -36,8 +36,7 @@ const Carousel = () => {
             top: "70vh",
             marginLeft: "30vw",
             color: "#B98E47",
-            fontSize: "30px",
-            fontFamily: "Bradley Hand ITC",
+            fontSize: "30px"
           }}
         >
           Créer votre compte et commandez vos repas

@@ -5,6 +5,7 @@ import {
 } from "../JS/actions/restaurantAction";
 import { useDispatch, useSelector } from "react-redux";
 import { withRouter } from "react-router-dom";
+import Bar from "../Bar/Bar";
 const RestoList = (props) => {
   const dispatch = useDispatch();
   const restaurants = useSelector((state) => state.restoReducer.restaurants);
@@ -24,7 +25,7 @@ const RestoList = (props) => {
   ) : error ? (
     <h1 style={{ marginTop: "15%", marginLeft: "40%" }}>404 Not Found</h1>
   ) : (
-    <div className="header">
+    <div className="header"  style={{marginTop:'11%'}}>
       <div className="search">
         <input
           type="text"
@@ -33,8 +34,13 @@ const RestoList = (props) => {
         />
         <i className="fas fa-search"></i>
       </div>
+      <div style={{display:'block'}}>
+      <div >
+      <Bar/>
+      </div>
+     <div>
       {restaurants
-        .filter((el) => el.name.toLowerCase().includes(text))
+        
         .map((el) => (
           <div className="restoList" key={el.id}>
             <img className="imgResto" src={el.image} alt="imgRestaurant" />
@@ -53,7 +59,7 @@ const RestoList = (props) => {
               </button>
             </div>
           </div>
-        ))}
+        ))}</div></div>
     </div>
   );
 };

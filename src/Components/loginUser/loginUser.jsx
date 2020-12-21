@@ -8,7 +8,6 @@ const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const loading = useSelector((state) => state.userReducer.loading);
-  const error = useSelector((state) => state.userReducer.errors);
   const loginUser = (e) => {
     e.preventDefault();
     dispatch(

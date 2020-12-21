@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import Bar from "../Bar/Bar";
 const Order = () => {
   const isAuth = useSelector((state) => state.userReducer.isAuth);
   const TTC =useSelector((state)=>state.cartReducer.tot)
@@ -7,6 +8,7 @@ const Order = () => {
 
   return (
     <div className="order">
+      <Bar/>
       <h3>Merci d'avoir passé commande</h3>
       <h5>Order N° {Date.now()} </h5>
       <div className="user_details">

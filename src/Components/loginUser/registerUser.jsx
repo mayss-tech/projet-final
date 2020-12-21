@@ -7,7 +7,6 @@ import { register } from "../JS/actions/userAction.js";
 const Register = () => {
   const loading = useSelector((state) => state.userReducer.loading);
   const user = useSelector((state) => state.userReducer.user);
-  const error = useSelector((state) => state.userReducer.errors);
   const dispatch = useDispatch();
 
   const [name, setName] = useState("");
