@@ -1,11 +1,15 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import homePic from '../images/home.PNG';
 import { BrowserRouter as Router } from "react-router-dom";
 
 const Home = () => {
   return (
     <Router>
       <div>
+        <div >
+          <img className="Pic"  src={homePic} alt="homePic"></img>
+          </div>
         <div className="part_1">
           <div>
             <img

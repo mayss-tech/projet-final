@@ -3,6 +3,7 @@ import logo from "../images/logos.png";
 import { useDispatch } from "react-redux";
 import { logout } from "../JS/actions/userAction";
 import { Route, withRouter, Link } from "react-router-dom";
+import Pannier from "../restaurant/Pannier";
 
 const NavBar = (props) => {
   const dispatch = useDispatch();
@@ -13,12 +14,16 @@ const NavBar = (props) => {
         <div>
           <img className="logo" src={logo} alt="logo"></img>
         </div>
-        <div className="bar_p">
-          <div>
+        <div>
             <p className="headerItem" onClick={() => props.history.push("/")}>
-              <i className="fas fa-home"></i> <b>Home</b>
+              <i className="fas fa-home"></i> 
             </p>
           </div>
+        <div>
+          <Pannier/>
+        </div>
+        <div className="bar_p">
+          
           <div>
             {JSON.parse(localStorage.getItem("token") === null) ? (
               <p className="headerItem">
@@ -40,6 +45,9 @@ const NavBar = (props) => {
                 </Link>
               </p>
             )}
+          </div>
+          <div>
+          <p className="headerItem"><i className="fas fa-comments"></i><b>Contacter-nous</b></p>
           </div>
         </div>
       </div>

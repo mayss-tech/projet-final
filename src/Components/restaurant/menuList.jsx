@@ -44,12 +44,10 @@ const MenuList = (props) => {
           <i className="fas fa-shopping-cart "></i>
           <p className="pannier" >{cartItems.length}</p>
         </div>
-     
       </div>
       <div style={{marginTop:'15%'}}>
       <Bar/>
       </div>
-     
       <div>
       <MenuDetails/>
 
