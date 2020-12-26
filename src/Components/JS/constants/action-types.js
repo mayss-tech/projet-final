@@ -44,3 +44,6 @@ export const ADD_CALENDER = 'ADD_CALENDER';
 export const ADD_MENU_BEGIN  = 'ADD_MENU_BEGIN';
 export const ADD_NEW_MENU = 'ADD_NEW_MENU';
 export const ADD_MENU_FAILURE ='ADD_MENU_FAILURE';
+
+// progress-bar action-types
+export const NEXT_STEP = 'NEXT_STEP'

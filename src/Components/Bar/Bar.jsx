@@ -1,17 +1,60 @@
-import React from 'react'
-
+import React, { useEffect,useState } from "react";
+import { useSelector } from "react-redux";
 const Bar = () => {
-    return (
-        <div className="container_Bar" >
-             <ul className="bar_style" >
-                <li className="active"><b>Restaurant</b> </li>
-                <li> <b>Menu</b> </li>
-                <li><b>Commander</b></li>
-                <li><b>Confirmer</b> </li>
-               
-            </ul>
-        </div>
-    )
-}
+  const stepper = useSelector((state) => state.progressBar.stepper);
+//   const menuDetails = useSelector((state) => state.menuReducer.menuDetails);
+  const cartItems = useSelector((state) => state.cartReducer.cartItems);
+  const [affNameResto,setAffNameResto]=useState("Restaurant")
+  useEffect(() => {
+   let menu =JSON.parse(localStorage.getItem('menuListX'))
+    if(menu!==null) 
+   {setAffNameResto(menu.name)} 
+   else{setAffNameResto("Restaurant")} 
+  }, []);
+  return (
+    <div className="translateBar">
+      <progress value={stepper} max="60" />
+      <div
+        className={`${
+          stepper <= 60 ? "circle_color_active" : "circle_color_nonActive"
+        } circle_bar step1 `}
+      >
+        <i className={stepper >= 20 ? "fas fa-check" : "none"}></i>
+      
+          
+          <p>{affNameResto}</p>
+        
+      </div>
+      <div
+        className={`${
+          stepper >= 20 ? "circle_color_active" : "circle_color_nonActive"
+        }  circle_bar step2`}
+      >
+        <i
+          className={
+            stepper >= 20 && cartItems.length !== 0 ? "fas fa-check" : "none"
+          }
+        ></i>
+        <p>Menu</p>
+      </div>
+      <div
+        className={`${
+          stepper >= 40 ? "circle_color_active" : "circle_color_nonActive"
+        } circle_bar step3`}
+      >
+        <i className={stepper >= 60 ? "fas fa-check" : "none"}></i>
+        <p>Commander</p>
+      </div>
+      <div
+        className={`${
+          stepper === 60 ? "circle_color_active" : "circle_color_nonActive"
+        } circle_bar step4`}
+      >
+        <i className={stepper === 60 ? "fas fa-check" : "none"}></i>
+        <p>Confirmer</p>
+      </div>
+    </div>
+  );
+};
 
-export default Bar
+export default Bar;

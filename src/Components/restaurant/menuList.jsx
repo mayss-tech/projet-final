@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import MenuDetails from "./MenuDetails";
 import RestoMenu from "./RestoMenu";
 import Bar from "../Bar/Bar";
+import { nextStep } from "../JS/actions/ProgressBar";
 const MenuList = (props) => {
   const menuDetails= useSelector((state) => state.menuReducer.menuDetails);
   const loading = useSelector((state) => state.menuReducer.loading);
@@ -18,9 +19,9 @@ const MenuList = (props) => {
   useEffect(() => {
       dispatch(fetchMenuAsync(props.match.params.id));
   },[]);
-  useEffect(() => {
-    dispatch(fetchRestaurantBeginAsync(props.match.params.id))
-  }, []);
+  // useEffect(() => {
+  //   dispatch(fetchRestaurantBeginAsync(props.match.params.id))
+  // }, []);
   return (menuDetails===null || loading) ? (
     <img
       src="https://www.mid-day.com/Resources/midday/images/loader.gif"
@@ -40,7 +41,8 @@ const MenuList = (props) => {
       <div className="i_menu"> <i className="fas fa-search "></i></div> 
         </div>
         <div className="tot_cart">
-        <h3 onClick={() => props.history.push("/cartItems")}> Panier</h3>
+        <h3 onClick={() =>  {dispatch(nextStep(40)) 
+          props.history.push("/cartItems")}}> Panier</h3>
           <i className="fas fa-shopping-cart "></i>
           <p className="pannier" >{cartItems.length}</p>
         </div>

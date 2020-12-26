@@ -12,7 +12,7 @@ const initialState = {
     menus:[], 
     loading: false,
     error: null,
-    menuDetails :null,
+    menuDetails :JSON.parse(localStorage.getItem('menuListX') )|| null,
     text:''
 };
 const menuReducer = (state = initialState, { type, payload }) => {

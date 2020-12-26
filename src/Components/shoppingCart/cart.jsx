@@ -1,6 +1,7 @@
 import React, { useEffect,useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Bar from "../Bar/Bar";
+import { nextStep } from "../JS/actions/ProgressBar";
 import {
   removeItem,
   increaseItem,
@@ -97,7 +98,8 @@ const Cart = (props) => {
           <button
             className="btn2_cart"
             onClick={() => {props.history.push("/order");
-              dispatch(totalCart(total),getProfile())}}
+              dispatch(totalCart(total),getProfile())
+            dispatch(nextStep(60))}}
           >
             <b>Commander</b>
           </button>

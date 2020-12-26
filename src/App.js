@@ -15,7 +15,6 @@ import ProfileAdmin from './Components/loginUser/ProfileAdmin';
 function App() {
   return (<BrowserRouter>
     
-    {/* <Route exact path="/" component={()=> <Carousel/>} /> */}
     <NavBar/>
     <Route exact path="/" component={()=> <Home /> } />
     <Route exact path='/inscription' component={(props)=> < Register {...props} />}/>

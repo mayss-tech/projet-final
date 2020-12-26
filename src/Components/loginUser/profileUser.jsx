@@ -1,9 +1,8 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect} from "react";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfile } from "../JS/actions/userAction.js";
-import RestoList from "../restaurant/restaurantList";
-import ProfileAdmin from "./ProfileAdmin.jsx";
+import RestoList from "../restaurant/restaurantList.jsx";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -21,25 +20,7 @@ const Profile = () => {
     />
   ) : !isAuth ? (
     <Redirect to="/login" />
-  ) : isAuth.role == "admin" ? (
-    <div>
-      <div className="admin">
-        {/* <h3>Bonjour {isAuth.name} !!</h3> */}
-      </div>
-      <ProfileAdmin/>
-    </div>
-  ) : (
-    <div className="profile_user">
-      <div className="user">
-        <p
-          style={{ fontSize: "22px", marginLeft: "1.5vw", marginTop: "1.2vh" }}
-        > Bon apétit {isAuth.name}{" "}<i className="fas fa-utensils"></i>
-        </p>
-      </div>
-      <div >
-      <RestoList/>
-      </div>
-    </div>
+  ) : ( <RestoList/>
   );
 };
 export default Profile;

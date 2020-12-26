@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import homePic from '../images/home.PNG';
 import { BrowserRouter as Router } from "react-router-dom";
 
+
 const Home = () => {
   return (
     <Router>
@@ -48,6 +49,7 @@ const Home = () => {
             </p>
           </div>
         </div>
+    
       </div>
     </Router>
   );

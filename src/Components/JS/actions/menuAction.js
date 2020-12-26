@@ -9,7 +9,7 @@ import {
     SEARCH_MENU
     } from '../constants/action-types';
 
-export const fetchMenuAsync = (id) => async (dispatch) => {
+export const fetchMenuAsync = (id) => async (dispatch,getState) => {
     dispatch({
         type: FETCH_MENU_BEGIN,
     });
@@ -23,8 +23,9 @@ export const fetchMenuAsync = (id) => async (dispatch) => {
         dispatch({
             type: FETCH_MENU_FAILURE,
             payload: error.response,
-        });
-}};
+        })}
+localStorage.setItem("menuListX", JSON.stringify(getState().menuReducer.menuDetails))
+};
 
 export const searchMenu = (text)=>(dispatch)=>{
     dispatch({

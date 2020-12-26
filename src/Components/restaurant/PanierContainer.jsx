@@ -1,5 +1,7 @@
 import React from 'react'
 import{useDispatch, useSelector} from "react-redux";
+import { withRouter } from 'react-router-dom';
+import { nextStep } from '../JS/actions/ProgressBar';
 
 import {
     removeItem,
@@ -12,22 +14,22 @@ const PanierContainer = (props) => {
     const TTC =useSelector((state)=>state.cartReducer.tot);
     const dispatch = useDispatch();
     return (
-        < div >
+        < div style={{position:"absolute"}} className= {props.open?"p":"none"}>
             
             <div className="panierContainer">
-            {/* <p >{menuDetails.name}</p> */}
-           <div>
+            {/* <h5 >{menuDetails.name}</h5> */}
+           <div >
 
                {
-                   cartItems.map(el=><div style={{display:"flex"}}>
-                       <div >
+                   cartItems.map(el=><div className="panierContainer_part1">
+                       <div style={{display:"flex"}} >
               <i
-                className="fas fa-plus"
+                className="fas fa-plus-square"
                 onClick={() => dispatch(increaseItem(el))}
               ></i>
-              <h4>{el.qtn} </h4>
+             <h5>{el.qtn} </h5>
               <i
-                className="fas fa-minus"
+                className="fas fa-minus-square"
                 onClick={() => {
                   el.qtn === 1
                     ? dispatch(removeItem(el.id))
@@ -40,15 +42,22 @@ const PanierContainer = (props) => {
                        <p>{el.price} dt </p>
                    </div>)
                }
-               <p>Total: {cartItems.length} achats {TTC}  dt </p>
+              
+              <div className="panierContainer_part2" >
+                <h5>Total : </h5>
+                 <p> {cartItems.length} achats</p>
+                  <p> {TTC}  dt </p></div> 
            </div>
-           <div> 
-               <p onClick={()=>props.history.push("/cartItems")}>Voir détails</p>
+         
+           <div > 
+               <button className="panierContainer_part3"  onClick={()=>{dispatch(nextStep(40))
+                 props.history.push("/cartItems")}}><b>Voir détails</b></button>
            </div>
+            
             </div >
           
         </div>
     )
 }
 
-export default PanierContainer
+export default withRouter (PanierContainer); 
