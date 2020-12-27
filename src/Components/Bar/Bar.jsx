@@ -1,8 +1,8 @@
 import React, { useEffect,useState } from "react";
 import { useSelector } from "react-redux";
+
 const Bar = () => {
   const stepper = useSelector((state) => state.progressBar.stepper);
-//   const menuDetails = useSelector((state) => state.menuReducer.menuDetails);
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
   const [affNameResto,setAffNameResto]=useState("Restaurant")
   useEffect(() => {
@@ -42,7 +42,7 @@ const Bar = () => {
           stepper >= 40 ? "circle_color_active" : "circle_color_nonActive"
         } circle_bar step3`}
       >
-        <i className={stepper >= 60 ? "fas fa-check" : "none"}></i>
+        <i className={stepper >=40  ? "fas fa-check" : "none"}></i>
         <p>Commander</p>
       </div>
       <div
@@ -53,6 +53,7 @@ const Bar = () => {
         <i className={stepper === 60 ? "fas fa-check" : "none"}></i>
         <p>Confirmer</p>
       </div>
+      
     </div>
   );
 };

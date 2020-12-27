@@ -1,13 +1,12 @@
-import React from "react";
+import React,{useState} from "react";
 import logo from "../images/logos.png";
-import { useDispatch } from "react-redux";
-import { logout } from "../JS/actions/userAction";
-import { Route, withRouter, Link } from "react-router-dom";
+import { Route, withRouter} from "react-router-dom";
 import Pannier from "../restaurant/Pannier";
+import ProfileUser from "../Profile/ProfileUser";
 
 const NavBar = (props) => {
-  const dispatch = useDispatch();
-
+  
+  const [open, setOpen]=useState(false);
   return (
     <Route>
       <div className="bar">
@@ -22,34 +21,28 @@ const NavBar = (props) => {
         <div>
           <Pannier/>
         </div>
-        <div className="bar_p">
-          
-          <div>
-            {JSON.parse(localStorage.getItem("token") === null) ? (
-              <p className="headerItem">
-                <Link
-                  style={{ textDecoration: "none", color: "#B48B47" }}
-                  to="/login"
-                >
-                  <i className="fas fa-user-alt"></i> <b> Se connecter </b>
-                </Link>
-              </p>
-            ) : (
-              <p className="headerItem">
-                <Link
-                  style={{ textDecoration: "none", color: "#B48B47" }}
-                  to="/"
-                  onClick={() => dispatch(logout())}
-                >
-                  <i className="fas fa-user-alt"></i> <b>Se déconnecter</b>
-                </Link>
-              </p>
-            )}
+
+        <div className="bar_p"  style={{display:"flex" }} >
+        <i className="fas fa-user-alt"></i>
+          <p><b>Mon compte</b> </p>
+          <div onClick={
+            ()=>{setOpen(!open)}
+          }>
+          <i className="fas fa-sort-down" ></i>
           </div>
+       
+        <div>
+          <ProfileUser open={open}/>
+        </div>
+        
+        </div>
+       
+           
+          
           <div>
           <p className="headerItem"><i className="fas fa-comments"></i><b>Contacter-nous</b></p>
           </div>
-        </div>
+        
       </div>
     </Route>
   );

@@ -99,7 +99,7 @@ const Cart = (props) => {
             className="btn2_cart"
             onClick={() => {props.history.push("/order");
               dispatch(totalCart(total),getProfile())
-            dispatch(nextStep(60))}}
+            dispatch(nextStep(40))}}
           >
             <b>Commander</b>
           </button>

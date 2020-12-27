@@ -712,6 +712,10 @@ margin-left:40vw;
 .step4{
   margin-left:80vw;
 }
-.hidden{
-  display:hidden
+
+.compte{
+  margin-top:4vh;
+height: 20vh;
+width:10vw;
+background-color: red;
 }

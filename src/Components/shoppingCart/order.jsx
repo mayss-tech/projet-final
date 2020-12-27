@@ -1,15 +1,20 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import { withRouter } from "react-router-dom";
 import Bar from "../Bar/Bar";
-const Order = () => {
+import { nextStep } from "../JS/actions/ProgressBar";
+const Order = (props) => {
   const isAuth = useSelector((state) => state.userReducer.isAuth);
   const TTC =useSelector((state)=>state.cartReducer.tot)
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
-
+  const dispatch = useDispatch();
   return (
     <div className="order">
+      <div>
       <Bar/>
-      <h3>Merci d'avoir passé commande</h3>
+      </div>
+      
+      
       <h5>Order N° {Date.now()} </h5>
       <div className="user_details">
         <p>Nom et prènom : {isAuth.name}</p>
@@ -26,8 +31,14 @@ const Order = () => {
         </div>)}
         <h5>Frais de livraison : 5 dt</h5>
         <h5> Prix à payer : {TTC} dt </h5>
+        <button onClick={()=>{props.history.push('Confirmer la commande');
+        dispatch(nextStep(60))
+      }
+      
+      
+      }>Confirmer la commande</button>
       </div>
     </div>
   );
 };
-export default Order;
+export default withRouter (Order);

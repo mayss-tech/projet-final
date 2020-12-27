@@ -4,7 +4,7 @@ import homePic from '../images/home.PNG';
 import { BrowserRouter as Router } from "react-router-dom";
 
 
-const Home = () => {
+const Home = (props) => {
   return (
     <Router>
       <div>
@@ -49,7 +49,11 @@ const Home = () => {
             </p>
           </div>
         </div>
-    
+        <div className="sec4"  >
+        {/* <img className="images"   src={img4} alt="img4"></img> */}
+        <h3> Vous êtes restaurateur ?</h3>
+        <button className="btn3"  onClick={()=>props.history.push('/partenaire')}><b>Rejoignez-nous</b></button>
+    </div>
       </div>
     </Router>
   );

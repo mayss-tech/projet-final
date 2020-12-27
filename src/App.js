@@ -12,6 +12,8 @@ import MenuList from './Components/restaurant/menuList';
 import Cart from './Components/shoppingCart/cart';
 import Order from './Components/shoppingCart/order';
 import ProfileAdmin from './Components/loginUser/ProfileAdmin';
+import ConfirmOrder from './Components/shoppingCart/ConfirmOrder';
+import Partner from './Components/partner/Partner';
 function App() {
   return (<BrowserRouter>
     
@@ -25,6 +27,8 @@ function App() {
     <Route exact path='/cartItems' component={(props)=>  <Cart {...props} />}/>
     <Route exact path='/order' component={(props)=>  <Order {...props} />}/>
     <Route exact path='/dashboardAdmin' component={()=>  <ProfileAdmin  />}/>
+    <Route exact path='/Confirmer la commande' component={()=> <ConfirmOrder/>}/>
+    <Route exact path='/partenaire' component={()=> <Partner/>  }/>  
     </BrowserRouter> );
 }
 export default App;
