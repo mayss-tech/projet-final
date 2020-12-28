@@ -18,7 +18,7 @@ export const FETCH_RESTAURANT_BEGIN   = 'FETCH_RESTAURANT_BEGIN';
 export const FETCH_RESTAURANT_SUCCESS = 'FETCH_RESTAURANT_SUCCESS';
 export const FETCH_RESTAURANT_FAILURE = 'FETCH_RESTAURANT_FAILURE';
 export const SEARCH_RESTAURANT = 'SEARCH_RESTAURANT';
-export const RATE_BEGIN ='RATE_BEGIN';
+export const RATE ='RATE';
 export const RATE_SUCCESS ='RATE_SUCCESS';
 export const RATE_FAILURE ='RATE_FAILURE';
 
@@ -46,4 +46,10 @@ export const ADD_NEW_MENU = 'ADD_NEW_MENU';
 export const ADD_MENU_FAILURE ='ADD_MENU_FAILURE';
 
 // progress-bar action-types
-export const NEXT_STEP = 'NEXT_STEP'
+export const NEXT_STEP = 'NEXT_STEP';
+
+//avis action-types
+export const ADD_AVIS = 'ADD_AVIS';
+export const REMOVE_AVIS = 'REMOVE_AVIS';
+export const TOGGEL_AVIS='TOGGEL_AVIS';
+export const EDIT_AVIS = 'EDIT_AVIS';

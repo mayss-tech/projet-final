@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+
 import './App.css';
 import Carousel from './Components/home/carousel';
 import NavBar from './Components/home/navBar';
@@ -14,6 +15,8 @@ import Order from './Components/shoppingCart/order';
 import ProfileAdmin from './Components/loginUser/ProfileAdmin';
 import ConfirmOrder from './Components/shoppingCart/ConfirmOrder';
 import Partner from './Components/partner/Partner';
+import LastComponent from './Components/shoppingCart/LastComponent';
+import ProfileUserDetails from './Components/Profile/ProfileUserDetails';
 function App() {
   return (<BrowserRouter>
     
@@ -21,14 +24,16 @@ function App() {
     <Route exact path="/" component={()=> <Home /> } />
     <Route exact path='/inscription' component={(props)=> < Register {...props} />}/>
     <Route exact path="/login" component={ (props)=>< Login {...props}/> }/>
-    <Route exact path='/profile' component={ (props)=><Profile {...props}/> }/>
+    <Route  exact path='/profile' component={ (props)=><Profile {...props}/> }/>
     <Route exact path='/resto/restoList' component={(props)=>  <RestoList {...props}  />}/>
     <Route exact path='/menuList/:id' component={(props)=>  <MenuList {...props} />}/>
     <Route exact path='/cartItems' component={(props)=>  <Cart {...props} />}/>
     <Route exact path='/order' component={(props)=>  <Order {...props} />}/>
     <Route exact path='/dashboardAdmin' component={()=>  <ProfileAdmin  />}/>
     <Route exact path='/Confirmer la commande' component={()=> <ConfirmOrder/>}/>
-    <Route exact path='/partenaire' component={()=> <Partner/>  }/>  
+    <Route exact path='/partenaire' component={()=> <Partner/>  }/> 
+    <Route exact path='/finish' component={()=> <LastComponent/> }/> 
+    <Route exact path='/profileDetails' component={()=> <ProfileUserDetails/>   }/>     
     </BrowserRouter> );
 }
 export default App;

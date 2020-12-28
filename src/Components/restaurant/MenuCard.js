@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { addItem } from "../JS/actions/shopping-cartAction";
+
 import PopUp from "./PopUp";
 
 const MenuCard = ({ id, menuName, price, img,qtn, menuDesc, nameResto}) => {
+  const cartItems = useSelector((state) => state.cartReducer.cartItems);
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   return (
@@ -25,12 +27,17 @@ const MenuCard = ({ id, menuName, price, img,qtn, menuDesc, nameResto}) => {
           onClick={() => setIsOpen(true)}>
             <i className="fas fa-eye"></i>
             </button>
-      <button className="menu_btn2"
-        onClick={() => dispatch(addItem( {id, menuName, price,img ,qtn , nameResto}))}
-      >
-        <b>Ajouter au panier</b>
-        <i className="fas fa-cart-plus"></i>
-      </button>
+<button className="menu_btn2"
+onClick={() => 
+
+dispatch(addItem( {id, menuName, price,img ,qtn , nameResto})) 
+  }
+>
+<b>Ajouter au panier</b>
+<i className="fas fa-cart-plus"></i>
+</button>
+
+
       </div>
       <PopUp
         isOpen={isOpen}

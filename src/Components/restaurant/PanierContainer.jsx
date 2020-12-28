@@ -9,7 +9,6 @@ import {
     decreaseItem,
   } from "../JS/actions/shopping-cartAction";
 const PanierContainer = (props) => {
-    const menuDetails= useSelector((state) => state.menuReducer.menuDetails);
     const cartItems = useSelector((state) => state.cartReducer.cartItems);
     const TTC =useSelector((state)=>state.cartReducer.tot);
     const dispatch = useDispatch();
@@ -17,9 +16,7 @@ const PanierContainer = (props) => {
         < div style={{position:"absolute"}} className= {props.open?"p":"none"}>
             
             <div className="panierContainer">
-            {/* <h5 >{menuDetails.name}</h5> */}
            <div >
-
                {
                    cartItems.map(el=><div className="panierContainer_part1">
                        <div style={{display:"flex"}} >
@@ -53,9 +50,7 @@ const PanierContainer = (props) => {
                <button className="panierContainer_part3"  onClick={()=>{dispatch(nextStep(40))
                  props.history.push("/cartItems")}}><b>Voir détails</b></button>
            </div>
-            
             </div >
-          
         </div>
     )
 }

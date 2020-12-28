@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import homePic from '../images/home.PNG';
+import homePic from '../images/Untitled-1.png';
 import { BrowserRouter as Router } from "react-router-dom";
 
 

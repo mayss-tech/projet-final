@@ -6,9 +6,10 @@ import {
     ADD_NEW_RESTAURANT, 
     ADD_RESTAURANT_FAILURE,
     SEARCH_RESTAURANT,
-    RATE_BEGIN,
-    RATE_SUCCESS,
-    RATE_FAILURE
+    // RATE_BEGIN,
+    // RATE_SUCCESS,
+    // RATE_FAILURE,
+    RATE
     } from '../constants/action-types';
 
 const initialState = {
@@ -16,7 +17,7 @@ const initialState = {
     loading: false,
     error: null,
     text:"",
-    rate : null
+    rate : 0
 };
 const restoReducer = (state = initialState, { type, payload }) => {
     switch (type) {
@@ -58,21 +59,26 @@ const restoReducer = (state = initialState, { type, payload }) => {
                 ...state,
             loading:false,
             }
-        case RATE_BEGIN:
-            return{
-            ...state,
-            loading:true
-            }
-        case RATE_SUCCESS:
+        // case RATE_BEGIN:
+        //     return{
+        //     ...state,
+        //     loading:true
+        //     }
+        // case RATE_SUCCESS:
+        //     return{
+        //         ...state,
+        //         loading:false,
+        //         rate:payload
+        //     }
+        // case RATE_FAILURE:
+        //     return{
+        //         ...state,
+        //         loading:false
+        //     }
+        case RATE:
             return{
                 ...state,
-                loading:false,
-                rate:payload
-            }
-        case RATE_FAILURE:
-            return{
-                ...state,
-                loading:false
+                newRate:payload
             }
     default:
         return state;

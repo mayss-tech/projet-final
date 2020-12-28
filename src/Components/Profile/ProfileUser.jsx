@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from "react-redux";
 import { logout } from "../JS/actions/userAction";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 const ProfileUser = (props) => {
     const dispatch = useDispatch();
@@ -10,7 +10,7 @@ const ProfileUser = (props) => {
         <div  className= {props.open?"p":"none"}>
             <div >
             <div>
-                <h5>Voir profil</h5>
+                <h5 onClick={()=>props.history.push('/profileDetails')}>Voir profil</h5>
             </div>
             <div>
             {JSON.parse(localStorage.getItem("token") === null) ? (
@@ -41,4 +41,4 @@ const ProfileUser = (props) => {
     )
 }
 
-export default ProfileUser
+export default  withRouter( ProfileUser);

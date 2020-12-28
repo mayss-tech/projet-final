@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import PanierContainer from './PanierContainer';
 import {useSelector} from "react-redux";
+import Condition from './Condition';
 const Pannier = () => {
     const cartItems = useSelector((state) => state.cartReducer.cartItems);
     const TTC =useSelector((state)=>state.cartReducer.tot);
@@ -32,6 +33,7 @@ const Pannier = () => {
   <div  >
         <PanierContainer open={open}/>
   </div>
+  <Condition />
 </div>
     )
 }

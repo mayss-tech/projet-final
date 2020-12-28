@@ -7,9 +7,10 @@ import {
     ADD_NEW_RESTAURANT,
     ADD_RESTAURANT_FAILURE,
     SEARCH_RESTAURANT,
-    RATE_BEGIN,
-    RATE_SUCCESS,
-    RATE_FAILURE
+    // RATE_BEGIN,
+    // RATE_SUCCESS,
+    // RATE_FAILURE,
+    RATE
     } from '../constants/action-types';
 
 export const fetchRestaurantBeginAsync = () => async (dispatch) => {
@@ -51,19 +52,24 @@ export const addNewRestaurant=(newResto)=>async (dispatch)=>{
     }
 }
 
-export const ratingResto=(id,ratingValue)=> async (dispatch)=>{
-    dispatch({
-        type :RATE_BEGIN,
-    })
-    try {
-        const rate = await axios.post('/dataRestaurant/rate',{id,ratingValue})
-        dispatch({
-            type:RATE_SUCCESS,
-            payload:rate.data
-        })
-        } catch (error) {
-        dispatch({
-            type:RATE_FAILURE
-        })
-    }
-}
+// export const ratingResto=(id,ratingValue)=> async (dispatch)=>{
+//     dispatch({
+//         type :RATE_BEGIN,
+//     })
+//     try {
+//         const rate = await axios.post('/dataRestaurant/rate',{id,ratingValue})
+//         dispatch({
+//             type:RATE_SUCCESS,
+//             payload:rate.data
+//         })
+//         } catch (error) {
+//         dispatch({
+//             type:RATE_FAILURE
+//         })
+//     }
+// }
+
+export const rate=(newRate)=>({
+type:RATE,
+payload:newRate
+})
