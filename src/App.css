@@ -719,3 +719,7 @@ height: 20vh;
 width:10vw;
 background-color: red;
 }
+textarea :focus{outline-offset: 0px;}
+:focus{
+outline: -webkit-focus-ring-color auto 1px;
+}

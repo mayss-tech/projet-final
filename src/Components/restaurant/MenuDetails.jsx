@@ -8,7 +8,7 @@ const MenuDetails = () => {
   return (
     <div className="part_menu">
       {menuDetails.menuDetails
-        .filter((el) => el.menuName.toLowerCase().includes(text))
+        .filter((el) => el.menuName.toLowerCase().includes(text.toLowerCase()))
         .map((el) => (
           <MenuCard
             nameResto={menuDetails.name}

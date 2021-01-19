@@ -33,7 +33,8 @@ function App() {
     <Route exact path='/Confirmer la commande' component={()=> <ConfirmOrder/>}/>
     <Route exact path='/partenaire' component={()=> <Partner/>  }/> 
     <Route exact path='/finish' component={()=> <LastComponent/> }/> 
-    <Route exact path='/profileDetails' component={()=> <ProfileUserDetails/>   }/>     
+    <Route exact path='/profileDetails' component={()=> <ProfileUserDetails/>   }/>    
+     
     </BrowserRouter> );
 }
 export default App;

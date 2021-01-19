@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import { addItem } from "../JS/actions/shopping-cartAction";
 
-import PopUp from "./PopUp";
+// import PopUp from "./PopUp";
 
 const MenuCard = ({ id, menuName, price, img,qtn, menuDesc, nameResto}) => {
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
@@ -39,11 +39,11 @@ dispatch(addItem( {id, menuName, price,img ,qtn , nameResto}))
 
 
       </div>
-      <PopUp
+      {/* <PopUp
         isOpen={isOpen}
         closeModal={() => setIsOpen(false)}
         resto={{ id, menuName, price, img , menuDesc}}
-      />
+      /> */}
     </div>
   );
 };
